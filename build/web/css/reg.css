@@ -1,0 +1,4 @@
+/* Reducir padding derecho del sidebar */
+.sidebar-nav {
+	padding-right: 10px;
+}

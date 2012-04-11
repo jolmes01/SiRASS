@@ -1,0 +1,6 @@
+.row.tipoUsuario .btn-group {
+	display: inline-block;
+}
+.row.tipoUsuario {
+	margin-bottom: 20px;
+}

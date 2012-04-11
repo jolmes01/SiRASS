@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/SiRASS">
+    <Realm  className="org.apache.catalina.realm.JDBCRealm"
+            driverName="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://localhost:3306/SiRASS"
+            connectionName="root" connectionPassword="root"
+            userTable="MUsuario" userNameCol="usuario" userCredCol="password"
+            userRoleTable="MRolUsuario" roleNameCol="rol" />
+</Context>
+

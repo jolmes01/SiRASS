@@ -1,0 +1,43 @@
+/* Headers con imagen */
+#sections img {
+	float: left;
+	margin-right: 6px;
+	top: 3px;
+	position: relative;
+}
+
+#sections h2 {
+	color: #ff6b6b;
+	margin-bottom: 4px;
+}
+
+header {
+	border-top: 1px solid #bf3a3c;
+	border-bottom: 1px solid #bf3a3c;
+	-moz-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.67);
+	-webkit-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.67);
+	box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.67);
+	padding: 20px 0;
+	margin-bottom: 30px;
+	width: 100%;
+	background: -moz-linear-gradient(90deg, #fc4d3a 0%, #fc913a 100%) #fc913a;
+	background: -webkit-gradient(linear, left bottom, left top, from(#fc4d3a), to(#fc913a)) #fc913a;
+	color: #9a0002;
+}
+
+header h1 {
+	font-size: 54px;
+	line-height: 62px;
+	color:  #9a0002 !important;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.47);
+}
+
+header .headFeature {
+	margin-top: 40px;
+}
+
+header p {
+	text-shadow: 0 -1px 1px #000000;
+	color: #fff;
+	font: 16px/24px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
