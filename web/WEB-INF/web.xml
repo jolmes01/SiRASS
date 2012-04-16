@@ -16,6 +16,10 @@
         <servlet-name>Signup</servlet-name>
         <servlet-class>account.Signup</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetPlantelesAsJSON</servlet-name>
+        <servlet-class>servlet.GetPlantelesAsJSON</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -27,6 +31,10 @@
     <servlet-mapping>
         <servlet-name>Signup</servlet-name>
         <url-pattern>/Signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetPlantelesAsJSON</servlet-name>
+        <url-pattern>/GetPlantelesAsJSON</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

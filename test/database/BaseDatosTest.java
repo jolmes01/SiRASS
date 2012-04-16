@@ -4,16 +4,20 @@
  */
 package database;
 
-import java.sql.Connection;
+import database.entity.CInstitucion;
+import database.entity.Plantel;
+import java.util.Iterator;
+import java.util.List;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
 import org.junit.*;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author gomezhyuuga
  */
 public class BaseDatosTest {
-    
+
     public BaseDatosTest() {
     }
 
@@ -24,55 +28,74 @@ public class BaseDatosTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
+        System.out.println("#####\t\t\t#####");
+        System.out.println("#####\tTesting...\t#####");
+        System.out.println("#####\t\t\t#####");
+        System.out.println("");
     }
-    
+
     @After
     public void tearDown() {
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+
+    /**
+     * Prueba para la obtención del catálogo de instituciones cuando hay al
+     * menos una institución almacenada en la BD.
+     */
     @Test
-    public void testConnectOK() {
-        System.out.print("Probando la conexión a la BD...");
-        // Crear un objeto de tipo DBConnection
-        BaseDatos connection = new BaseDatos();
-        // Establecer parámetros
-        connection.setDriverClassName("com.mysql.jdbc.Driver");
-        connection.setUrl("jdbc:mysql://localhost:3306/SiRASS");
-        connection.setUsername("root");
-        connection.setPassword("root");
-        // Inicializar DataSource
-        connection.inicializarDataSource();
-        // Obtener conexión
-        Connection conexion = connection.realizaConexion();
-        // La conexión no debería ser nula
-        assertNotNull(conexion);
-        connection.liberaConexion(conexion);
+    public void testGetInstitucionesLleno() {
+        System.out.println("testGetInstitucionesLleno..");
+        BaseDatos instance = new BaseDatos();
+        List<CInstitucion> instituciones = instance.getInstituciones();
+        // Esperar que el tamaño sea al menos de 1 o más
+        int expResult = 1;
+        List result = instituciones;
+        // Comprobar que no sea nulo
+        assertNotNull(result);
+        // Y que el tamaño no sea cero
+        assertNotSame(0, result.size());
+        // Imprimir los datos
+        Iterator<CInstitucion> it = instituciones.iterator();
+        while (it.hasNext()) {
+            CInstitucion el = it.next();
+            System.out.println("Nombre: " + el.getNombre());
+            System.out.println("id: " + el.getId());
+            System.out.println("Creación: " + el.getCreacion());
+            System.out.println("UltimaModif: " + el.getUltimaModif());
+            System.out.println("ModificadoPor: " + el.getModificadoPor());
+            System.out.println("");
+        }
     }
-    // Probar que la conexión no se establezca
+    /**
+     * Prueba para la obtención del catálogo de instituciones cuando hay al
+     * menos una institución almacenada en la BD.
+     */
     @Test
-    public void testConnectBAD() {
-        System.out.println("Probando conexión fallida a la BD...");
-        // Crear un objeto de tipo DBConnection
-        BaseDatos connection = new BaseDatos();
-        // Establecer parámetros
-        connection.setDriverClassName("com.mysql.jdbc.Driver");
-        connection.setUrl("jdbc:mysql://localhost:3306");
-        // Mal pass
-        connection.setUsername("doku");
-        connection.setPassword("doku");
-        // Inicializar DataSource
-        connection.inicializarDataSource();
-        // Obtener conexión
-        Connection conexion = connection.realizaConexion();
-        // La conexión debería ser nula
-        assertNull(conexion);
-        connection.liberaConexion(conexion);
+    public void testGetPlantelesInstitucionLleno() {
+        System.out.println("testGetPlantelesInstitucionLleno..");
+        int idPlantel = 1;
+        BaseDatos instance = new BaseDatos();
+        List<Plantel> planteles = instance.getPlantelesInstitucion(idPlantel);
+        // Esperar que el tamaño sea al menos de 1 o más
+        int expResult = 1;
+        List result = planteles;
+        // Comprobar que no sea nulo
+        assertNotNull(result);
+        // Y que el tamaño no sea cero
+        assertNotSame(0, result.size());
+        // Imprimir los datos
+        Iterator<Plantel> it = planteles.iterator();
+        while (it.hasNext()) {
+            Plantel el = it.next();
+            System.out.println("Nombre: " + el.getNombre());
+            System.out.println("id: " + el.getId());
+            System.out.println("idInstitucion: " + el.getIdInstitucion());
+            System.out.println("Creación: " + el.getCreacion());
+            System.out.println("UltimaModif: " + el.getUltimaModif());
+            System.out.println("ModificadoPor: " + el.getModificadoPor());
+        }
     }
 }

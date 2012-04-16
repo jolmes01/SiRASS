@@ -50,7 +50,7 @@
 							Prestador
 							<i class="icon-user icon-white"></i>
 						</button>
-						<button class="btn btn-primary btn-large" id="btnInstitucion" data-file="formDatosInstitucion">
+						<button class="btn btn-primary btn-large" id="btnInstitucion" data-file="registroInstitucion">
 							Instituci&oacute;n
 							<i class="icon-road icon-white"></i>
 						</button>
@@ -88,7 +88,7 @@
 			<input type="hidden" name="userType" value="prestador" />
                         <input type="hidden" name="file" value="registro" />
 			<div id="formulario">
-                            <%@include file="/forms/formDatosGenerales.jsp" %>
+                            <%@include file="/jspf/forms/formDatosGenerales.jsp" %>
 			</div> <!-- end formulario -->
 			<!-- botones de acci&oacute;n -->
 			<div class="row center" id="sendButtons">

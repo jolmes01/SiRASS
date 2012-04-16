@@ -4,16 +4,27 @@ package database.entity;
  *
  * @author gomezhyuuga
  */
-class Plantel {
-    private int id;
-    private String nombre;
+public class Plantel extends Registro {
 
-    public int getId() {
-        return id;
+    private String nombre;
+    private int idInstitucion;
+    private int idPlantel;
+
+    public int getIdPlantel() {
+        return idPlantel;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdPlantel(int idPlantel) {
+        this.idPlantel = idPlantel;
+        super.setId(idPlantel);
+    }
+
+    public int getIdInstitucion() {
+        return idInstitucion;
+    }
+
+    public void setIdInstitucion(int idInstitucion) {
+        this.idInstitucion = idInstitucion;
     }
 
     public String getNombre() {

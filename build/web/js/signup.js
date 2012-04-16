@@ -9,9 +9,10 @@ $(document).ready(function() {
         // Actuar solo si no está seleccionado
         if (!btn.hasClass('active')) {
             // Mostrar formulario dependiendo del botón pulsado
-            changeForm("./forms/" + btn.data('file') + ".jsp");
+            changeForm("./jspf/forms/" + btn.data('file') + ".jsp");
         }
     });
+    
     // Obtener modals para avisos
     var modalOK = $('#modalRegOK');
     var modalERROR = $('#modalRegERROR');
@@ -43,45 +44,45 @@ $(document).ready(function() {
         // Solo hacer el registro si los campos están ok
         if (enviar) {
             var jqxhr = $.post(action, formRegistro)
-                .success(function(data, textStatus, jqXHR) {
-                    console.log("########## Request de registro #############");
-                    console.log("data: " + data);
-                    console.log("textStatus: " + textStatus);
-                    // Detectar si se realizó el registro correctamente
-                    if (data == 1) {    // Se realizó correctamente
-                        // Mostrar modalDialog
-                        modalOK.modal('show');
-                    }
-                    // Regresar el botón a su estado original
-                    submitButton.button('reset');
-                })
-                .error(function(jqXHR, textStatus, errorThrown) {
-                    console.error("########## ERROR #############");
-                    console.log("errorCode: " + jqXHR.status);
-                    console.log("textStatus: " + textStatus);
-                    var msg = "Error desconocido. Intenta nuevamente.";
-                    // Detectar si se realizó el registro correctamente
-                    if (jqXHR.status == 0) { // Hubo un error con la BD
-                        msg = "Hubo un problema con la base de datos.";
-                        msg += " Intenta nuevamente.";
-                    } else if (jqXHR.status == 2) { // Error. Username repetido
-                        msg = "El usuario que escogiste ya existe. Utiliza otro."
-                    }
-                    // Insertar mensaje en modal
-                        modalERROR
-                            .children('.modal-body')
-                                .children('p')
-                                    .text(msg);
+            .success(function(data, textStatus, jqXHR) {
+                console.log("########## Request de registro #############");
+                console.log("data: " + data);
+                console.log("textStatus: " + textStatus);
+                // Detectar si se realizó el registro correctamente
+                if (data == 1) {    // Se realizó correctamente
                     // Mostrar modalDialog
-                    modalERROR.modal('show');
-                    // Regresar el botón a su estado original
-                    submitButton.button('reset');
-                });
+                    modalOK.modal('show');
+                }
+                // Regresar el botón a su estado original
+                submitButton.button('reset');
+            })
+            .error(function(jqXHR, textStatus, errorThrown) {
+                console.error("########## ERROR #############");
+                console.log("errorCode: " + jqXHR.status);
+                console.log("textStatus: " + textStatus);
+                var msg = "Error desconocido. Intenta nuevamente.";
+                // Detectar si se realizó el registro correctamente
+                if (jqXHR.status == 0) { // Hubo un error con la BD
+                    msg = "Hubo un problema con la base de datos.";
+                    msg += " Intenta nuevamente.";
+                } else if (jqXHR.status == 2) { // Error. Username repetido
+                    msg = "El usuario que escogiste ya existe. Utiliza otro."
+                }
+                // Insertar mensaje en modal
+                modalERROR
+                .children('.modal-body')
+                .children('p')
+                .text(msg);
+                // Mostrar modalDialog
+                modalERROR.modal('show');
+                // Regresar el botón a su estado original
+                submitButton.button('reset');
+            });
         } else {
             modalERROR
-                .children('.modal-body')
-                    .children('p')
-                        .html(errores);
+            .children('.modal-body')
+            .children('p')
+            .html(errores);
             modalERROR.modal('show');
             // Regresar el botón a su estado original
             submitButton.button('reset');
@@ -112,4 +113,46 @@ function validarRegistro(form) {
     }
     // Error. Hay campos vacíos
     return enviar;
+}
+
+function obtenerPlanteles(instituciones) {
+    // Lista de instituciones
+    var listaInstituciones = $(instituciones);
+    // Lista de planteles
+    var listaPlanteles = $('#plantelesList');
+    // Tomar el elemento seleccionado
+    var selIn = listaInstituciones.prop('selectedIndex');
+    console.log(selIn);
+    // Si no es cero, hacer consulta para obtener planteles
+    if (selIn != 0) {
+        $.getJSON("./GetPlantelesAsJSON?idInstitucion=" + selIn)
+        .success(function(data, textStatus, jqXHR) {
+//            console.log("########## Request de planteles #############");
+//            console.log("data: " + data);
+//            console.log("textStatus: " + textStatus);
+//            console.log("JQXHR");
+//            console.log(jqXHR);
+            // Obtener lista de planteles
+            var items = [];
+            $.each(data, function() {
+                items.push('<option value="' + $(this).prop('idPlantel') + '">' + $(this).prop('nombre') +'</option>');
+            });
+//            console.log(items);
+            // Cambiar lista de planteles
+            if(items.length == 0) {    // Si está vacía agregar leyenda "sin planteles""
+                items.push('<option value="0">Sin planteles</option>');
+            }
+            actualizarSelect(listaPlanteles, items);
+        });
+    }
+}
+
+function actualizarSelect(select, options) {
+    select.empty();
+    for(var i = 0; i < options.length; i++) {
+        select.append(options[i]);
+        console.log(options[i]);
+    }
+    select.prepend('<option value="ninguno">Ninguno</option>');
+    select.prepend('<option value="0">-- Elegir alguno existente --</option>');
 }

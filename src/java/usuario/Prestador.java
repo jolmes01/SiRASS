@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package database.entity;
+package usuario;
 
-import database.BaseDatos;
+import database.BaseDatos_0;
 
 /**
  *
@@ -32,21 +32,20 @@ public class Prestador extends Persona {
     @Override
     public int registro() {
         // Conectarse a la BD
-        BaseDatos baseDatos = new BaseDatos();
+        BaseDatos_0 baseDatos = new BaseDatos_0();
         // 1) Hacer registro de usuario
         int status = super.registro();
         // 2) Hacer registro de prestador
-        // Solo si se registró el usuario continuar
-        if (status == 1) {
+        if (status == 1) {  // Solo si se registró el usuario continuar
             // 3) Hacer el registro de prestador
-            status = baseDatos.doInsertPrestador(this);
+            int idPrestador = baseDatos.doInsertPrestador(this);
             System.out.println(this.getTipo() + "ID " + this.getId());
-            // Si se hizo el registro correcto del prestador
-            if (status == 1) {
-                // 4) Actualizar la tabla de usuario con el ID del prestador y sus roles
-                status = baseDatos.doUpdate("`SiRASS`.`usuario`",
-                        "`SiRASS`.`usuario`.idPrestador=" + this.getId(),
-                        "`SiRASS`.`usuario`.usuario = '" + this.getUsuario() + "'");
+            if (idPrestador > 0) {  // Si se hizo el registro correcto del prestador
+                // 4) Establecer el id una vez registrado
+                this.setId(idPrestador);
+                // 5) Actualizar la tabla de rolUsuario con el rol respectivo
+                status = baseDatos.insertRolUsuario("prestador", "NOW()",
+                        this.getUsuario(), this.getUsuario());
             }
         }
         return status;
@@ -56,7 +55,7 @@ public class Prestador extends Persona {
     public int baja() {
         int status = 0;
         // Conectarse a la BD
-        BaseDatos baseDatos = new BaseDatos();
+        BaseDatos_0 baseDatos = new BaseDatos_0();
         // Realizar DELETE
         status = baseDatos.doDeleteUsuarioAll(this);
         return status;

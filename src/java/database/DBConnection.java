@@ -47,7 +47,7 @@ public class DBConnection {
         try {
             // Obtener conexión con la base de dato
             connection = (Connection) this.dataSource.getConnection();
-            System.out.println("CONEXION OBTENIDA");
+//            System.out.println("CONEXION OBTENIDA");
         } catch (SQLException ex) {
             System.out.println("ERROR AL REALIZAR CONEXION");
 //            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,7 +61,7 @@ public class DBConnection {
             // Liberar la conexion para que alguien más la utilice
             try {
                 conexion.close();
-                System.out.println("CONEXION CERRADA");
+//                System.out.println("CONEXION CERRADA");
             } catch (SQLException ex) {
                 System.out.println("Excepción al momento de liberar conexión");
 //                Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);

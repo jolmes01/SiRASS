@@ -4,7 +4,7 @@
  */
 package database.entity;
 
-import database.BaseDatos;
+import database.BaseDatos_0;
 import org.junit.*;
 import static org.junit.Assert.*;
 

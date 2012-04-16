@@ -4,7 +4,8 @@
  */
 package database.entity;
 
-import database.BaseDatos;
+import usuario.Prestador;
+import database.BaseDatos_0;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

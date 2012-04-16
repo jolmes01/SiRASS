@@ -8,6 +8,7 @@
 	<!-- Estilos CSS -->
 	<link href="<%= path %>/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="<%= path %>/css/main.css" rel="stylesheet" />
+        <link rel="icon" href="<%= path %>/favicon.ico" type="image/x-icon" />
 
         <!-- HTML5 shim, para soporte de IE6-8 + HTML5 -->
         <!-- <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> -->

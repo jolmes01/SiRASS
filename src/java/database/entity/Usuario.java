@@ -1,6 +1,6 @@
 package database.entity;
 
-import database.BaseDatos;
+import database.BaseDatos_0;
 
 /**
  *
@@ -21,24 +21,23 @@ public class Usuario {
      * 1062 si el usuario ya existe, 0 si hubo un error.
      */
     public int registro() {
-        int status = 0;
         // Conectarse a la BD
-        BaseDatos baseDatos = new BaseDatos();
+        BaseDatos_0 baseDatos = new BaseDatos_0();
         // Realizar el INSERT
-        status = baseDatos.doInsertUsuario(this);
+        int status = baseDatos.doInsertUsuario(this);
         return status;
     }
-    /**
-     * 
-     * @return status : int. 1 si se borró
-     */
+
     public int baja() {
-        int status = 0;
         // Conectarse a la BD
-        BaseDatos baseDatos = new BaseDatos();
+        BaseDatos_0 baseDatos = new BaseDatos_0();
         // Realizar DELETE
-        status = baseDatos.doDeleteUsuario(this);
+        int status = baseDatos.doDeleteUsuario(this);
         return status;
+    }
+    
+    public void actualizar() {
+        
     }
 
     // Getters & setters

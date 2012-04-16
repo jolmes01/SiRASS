@@ -1,8 +1,8 @@
 package account;
 
-import database.entity.Administrador;
-import database.entity.Institucion;
-import database.entity.Prestador;
+import usuario.Administrador;
+import usuario.Institucion;
+import usuario.Prestador;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
