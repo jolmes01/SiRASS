@@ -89,7 +89,7 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
-            <role-name>prestador</role-name>
+            <role-name>institucion</role-name>
         </auth-constraint>
     </security-constraint>
     <login-config>

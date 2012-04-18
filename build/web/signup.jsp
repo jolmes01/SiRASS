@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -46,7 +46,7 @@
 			<div class="span4 offset4">
 				<h1>Tipo de usuario</h1>
 					<div class="btn-group" data-toggle="buttons-radio">
-						<button class="btn btn-primary btn-large active" id="btnPrestador" data-file="formDatosGenerales">
+						<button class="btn btn-primary btn-large active" id="btnPrestador" data-file="registroPrestador">
 							Prestador
 							<i class="icon-user icon-white"></i>
 						</button>
@@ -84,11 +84,11 @@
 		<!-- Formulario
 		================================================== -->
 		<form class="form-horizontal" name="registro" id="registro" data-form="prestador" action="Signup" method="post">
+<!--		<form class="form-horizontal" name="registro" id="registro" data-form="prestador" action="./jspf/forms/dataForm.jsp" method="post">-->
 			<!-- inputs oculto -->
-			<input type="hidden" name="userType" value="prestador" />
                         <input type="hidden" name="file" value="registro" />
 			<div id="formulario">
-                            <%@include file="/jspf/forms/formDatosGenerales.jsp" %>
+                            <%@include file="/jspf/forms/registroPrestador.jsp" %>
 			</div> <!-- end formulario -->
 			<!-- botones de acci&oacute;n -->
 			<div class="row center" id="sendButtons">

@@ -1,12 +1,14 @@
 package database.entity;
 
+import database.BaseDatos;
 import database.BaseDatos_0;
+import database.OperacionesDB;
 
 /**
  *
  * @author gomezhyuuga
  */
-public class Usuario {
+public class Usuario extends Registro {
 
     // Atributos del usuario
     private int id;
@@ -16,15 +18,16 @@ public class Usuario {
     private String tipo;
 
     /**
-     * 
-     * @return status : int. Devuelve 1 si se insertó el usuario,
-     * 1062 si el usuario ya existe, 0 si hubo un error.
+     * * Hace el registro del usuario en el sistema.
+     * @param creador : String - El usuario que está creando el usuario
+     * @return status : int. Devuelve 1 si se agregó, 1062 si el usuario ya
+     * existe, 0 si hubo un error.
      */
     public int registro() {
         // Conectarse a la BD
-        BaseDatos_0 baseDatos = new BaseDatos_0();
+        OperacionesDB odb = new BaseDatos();
         // Realizar el INSERT
-        int status = baseDatos.doInsertUsuario(this);
+        int status = odb.insertUsuario(this);
         return status;
     }
 
@@ -35,9 +38,8 @@ public class Usuario {
         int status = baseDatos.doDeleteUsuario(this);
         return status;
     }
-    
+
     public void actualizar() {
-        
     }
 
     // Getters & setters

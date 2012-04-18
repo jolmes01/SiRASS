@@ -1,5 +1,8 @@
 package database.entity;
 
+import database.BaseDatos;
+import database.OperacionesDB;
+
 /**
  *
  * @author gomezhyuuga
@@ -8,15 +11,21 @@ public class Plantel extends Registro {
 
     private String nombre;
     private int idInstitucion;
-    private int idPlantel;
+    private int id;
 
-    public int getIdPlantel() {
-        return idPlantel;
+    public int registro() {
+        int status = 0;
+        // 1) Conectarse a la BD
+        OperacionesDB odb = new BaseDatos();
+        status = odb.insertPlantel(this);
+        return status;
+    }
+    public int getId() {
+        return id;
     }
 
-    public void setIdPlantel(int idPlantel) {
-        this.idPlantel = idPlantel;
-        super.setId(idPlantel);
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getIdInstitucion() {

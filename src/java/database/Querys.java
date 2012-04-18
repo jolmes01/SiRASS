@@ -13,21 +13,29 @@ public class Querys {
     /*
      * INSERTS
      */
-    public final static String INSERT_USUARIO = "INSERT INTO `SiRASS`.`MUsuario` (`MUsuario`, "
+    public final static String INSERT_USUARIO = "INSERT INTO `SiRASS`.`MUsuario` (`usuario`, "
             + "`password`, `idInstitucion`, `idAdministrador`, "
             + "`idPrestador`, `creacion`, `modificadoPor`, `ultimaModif`) "
             + "VALUES (?, ?, ?, ?, ?, NOW(), "
-            + "DEFAULT, CURRENT_TIMESTAMP);";
+            + "?, CURRENT_TIMESTAMP);";
     public final static String INSERT_PRESTADOR = "INSERT INTO `SiRASS`.`MPrestador` "
             + "(`idPrestador`, `nControl`, `nombre`, `aPaterno`, `aMaterno`, "
             + "`email`, `nacimiento`, `sexo`, `dCalle`, `dNumInt`, `dNumExt`, "
             + "`dCP`, `dDelegacion`, `dColonia`, `telCasa`, `telCel`, `difundir`, "
-            + "`creacion`, `modificadoPor`, `ultimaModif`) VALUES (NULL, NULL, "
-            + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), DEFAULT, "
+            + "`creacion`, `modificadoPor`, `ultimaModif`) VALUES (NULL, ?, "
+            + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, "
             + "CURRENT_TIMESTAMP);";
+    public final static String INSERT_INSTITUCION = "INSERT INTO `SiRASS`.`MInstitucion` "
+            + "(`idInstitucion`, `idPlantel`, `domicilio`, `area`, `responsable`, "
+            + "`cargo`, `tel`, `telExt`, `email`, `creacion`, `modificadoPor`, "
+            + "`ultimaModif`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, "
+            + "CURRENT_TIMESTAMP);";
+    public final static String INSERT_PLANTEL = "INSERT INTO `SiRASS`.`CPlantel` "
+            + "(`idCPlantel`, `idInstitucion`, `nombre`, `creacion`, `modificadoPor`, "
+            + "`ultimaModif`) VALUES (NULL, ?, ?, NOW(), ?, CURRENT_TIMESTAMP);";
     public final static String INSERT_ROL = "INSERT INTO `SiRASS`.`MRolUsuario` "
             + "(`usuario`, `rol`, `creacion`, `modificadoPor`, `ultimaModif`) "
-            + "VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP);";
+            + "VALUES (?, ?, NOW(), ?, CURRENT_TIMESTAMP);";
     /*
      * DELETES
      */
@@ -54,6 +62,10 @@ public class Querys {
     /*
      * UPDATES
      */
+    public final static String UPDATE_USUARIO = "UPDATE `SiRASS`.`MUsuario` SET `usuario`=?, "
+            + "`password`=?, `idInstitucion`=?, `idAdministrador`=?, "
+            + "`idPrestador`=?, `modificadoPor`=?, "
+            + "`ultimaModif`=CURRENT_TIMESTAMP WHERE `SiRASS`.`MUsuario`.`usuario`=?;";
     /*
      * SELECTS
      */

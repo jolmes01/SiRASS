@@ -1,8 +1,5 @@
 package account;
 
-import usuario.Administrador;
-import usuario.Institucion;
-import usuario.Prestador;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -14,6 +11,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import usuario.Administrador;
+import usuario.Institucion;
+import usuario.Prestador;
 
 /**
  *
@@ -33,14 +33,14 @@ public class Signup extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/plain");
-        int status = 0;
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/plain;charset=utf-8");
+        int status = 1;
         // TODO 0) Validar datos
         // 1) Obtener parámetros genéricos: usuario, pass y tipo
         String usuario = request.getParameter("username");
         String password = request.getParameter("password");
         String userType = request.getParameter("userType");
-        
         // 2) Detectar el tipo de usuario y crear objeto
         if (userType.compareTo("prestador") == 0) { // Prestador
             // TODO 2.1) Validar datos prestador
@@ -50,6 +50,11 @@ public class Signup extends HttpServlet {
             prestador.setUsuario(usuario);
             prestador.setPassword(password);
             prestador.setRoles(new String[] {userType});
+            // Imprimir info
+//            prestador.imprimirInfo();
+            // 2.4) Dar de alta al prestador
+            prestador.setModificadoPor("system");
+            status = prestador.registro();
         } else if (userType.compareTo("institucion") == 0) {    // Institucion
             // TODO 2.1) Validar datos institucion
             // 2.2) Guardar parámetros de la institución y crear objeto
@@ -58,23 +63,22 @@ public class Signup extends HttpServlet {
             institucion.setUsuario(usuario);
             institucion.setPassword(password);
             institucion.setRoles(new String[] {userType});
-        } else if (userType.compareTo("admin") == 0) {  // Admin
-            // TODO 2.1) Validar datos admin
-            // 2.2) Guardar parámetros del admin y crear objeto
-            Administrador admin = crearAdministrador(request);
-            // 2.3) Establecer nombre de usuario y password
-            admin.setUsuario(usuario);
-            admin.setPassword(password);
-            admin.setRoles(new String[] {"admin", userType});
+            // Imprimir info
+            institucion.imprimirInfo();
+            // 2.4) Dar de alta la institución
+            institucion.setModificadoPor("system");
+            status = institucion.registro();
         }
-        // Realizar el alta del usuario
-        
 //        response.sendError(status);
+        if (status == 1) {
         PrintWriter out = response.getWriter();
         try {
             out.print(status);
         } finally {
             out.close();
+        }
+        } else {
+            response.sendError(status);
         }
     }
 
@@ -89,20 +93,23 @@ public class Signup extends HttpServlet {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-DD");
         Date nacimiento = null;
         try {
-            nacimiento = (Date) dateFormat.parse(nacimientoString);
+            nacimiento = new Date(dateFormat.parse(nacimientoString).getTime());
         } catch (ParseException ex) {
             Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
         }
         char sexo = request.getParameter("sexo").charAt(0);
         String dCalle = request.getParameter("dCalle");
         String dNumInt = request.getParameter("dNumInt");
-        String dNumExt = request.getParameter("dNumext");
+        String dNumExt = request.getParameter("dNumExt");
         String dCP = request.getParameter("dCP");
         String dDelegacion = request.getParameter("dDelegacion");
         String dColonia = request.getParameter("dColonia");
         String telCasa = request.getParameter("telCasa");
         String telCel = request.getParameter("telCel");
-        boolean difundir = Boolean.parseBoolean(request.getParameter("difundir"));
+        String difundirStr = request.getParameter("difundir");
+        boolean difundir = (difundirStr.compareTo("1") == 0) ? true : false;
+        System.out.println(difundir);
+        System.out.println(request.getParameter("difundir"));
         // Establecer valores
         prestador.setNombre(nombre);
         prestador.setaPaterno(aPaterno);
@@ -154,7 +161,7 @@ public class Signup extends HttpServlet {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-DD");
         Date nacimiento = null;
         try {
-            nacimiento = (Date) dateFormat.parse(nacimientoString);
+            nacimiento = new Date(dateFormat.parse(nacimientoString).getTime());
         } catch (ParseException ex) {
             Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -4,15 +4,17 @@
  */
 package usuario;
 
+import database.BaseDatos;
 import database.BaseDatos_0;
+import database.OperacionesDB;
 
 /**
  *
  * @author gomezhyuuga
  */
 public class Prestador extends Persona {
-    // Atributos del prestador
 
+    // Atributos del prestador
     private String nControl;
     private String dCalle;
     private String dNumInt;
@@ -29,23 +31,36 @@ public class Prestador extends Persona {
     }
 
     // Métodos del prestador
+    /**
+     * Da de alta al prestador en el sistema junto con su usuario y roles.
+     *
+     * @return status : int - Devuelve 1 si se agregó, 0 si hubo un error, 1062
+     * si el usuario asignado ya existe
+     */
     @Override
     public int registro() {
         // Conectarse a la BD
-        BaseDatos_0 baseDatos = new BaseDatos_0();
+        OperacionesDB odb = new BaseDatos();
         // 1) Hacer registro de usuario
         int status = super.registro();
         // 2) Hacer registro de prestador
         if (status == 1) {  // Solo si se registró el usuario continuar
             // 3) Hacer el registro de prestador
-            int idPrestador = baseDatos.doInsertPrestador(this);
+            int idPrestador = odb.insertPrestador(this);
             System.out.println(this.getTipo() + "ID " + this.getId());
             if (idPrestador > 0) {  // Si se hizo el registro correcto del prestador
+                System.out.println(this.getTipo() + "ID " + this.getId());
                 // 4) Establecer el id una vez registrado
                 this.setId(idPrestador);
-                // 5) Actualizar la tabla de rolUsuario con el rol respectivo
-                status = baseDatos.insertRolUsuario("prestador", "NOW()",
-                        this.getUsuario(), this.getUsuario());
+                // 5) Actualizar la tabla de Usuario con el ID
+                status = odb.updateUsuario(this);
+                if (status == 1) {
+                    // 6) Insertar el usuario y el rol
+                    status = odb.insertRol(this, "prestador");
+                    return status;
+                }
+            } else {
+                return 0;
             }
         }
         return status;
@@ -151,5 +166,25 @@ public class Prestador extends Persona {
 
     public void setTelCel(String telCel) {
         this.telCel = telCel;
+    }
+
+    public void imprimirInfo() {
+        System.out.println("#####\tInformación del prestador\t#####");
+        System.out.println("ID:\t" + this.getId());
+        System.out.println("Usuario:\t" + this.getUsuario());
+        System.out.println("Password:\t" + this.getPassword());
+        System.out.println("Nombre:\t" + this.getNombre());
+        System.out.println("Apellido Paterno:\t" + this.getaPaterno());
+        System.out.println("Apellido Materno:\t" + this.getaMaterno());
+        System.out.println("Email:\t" + this.getEmail());
+        System.out.println("Calle:\t" + this.getdCalle());
+        System.out.println("Colonia:\t" + this.getdColonia());
+        System.out.println("Delegación:\t" + this.getdDelegacion());
+        System.out.println("Num Ext:\t" + this.getdNumExt());
+        System.out.println("Num Int:\t" + this.getdNumInt());
+        System.out.println("CP:\t" + this.getdCP());
+        System.out.println("TelCasa:\t" + this.getTelCasa());
+        System.out.println("TelCel:\t" + this.getTelCel());
+        System.out.println("#######################################");
     }
 }

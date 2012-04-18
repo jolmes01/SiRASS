@@ -1,6 +1,7 @@
 package usuario;
 
 import database.entity.Usuario;
+import database.entity.Usuario;
 import java.sql.Date;
 
 /**
