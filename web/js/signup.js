@@ -138,7 +138,7 @@ function obtenerPlanteles(instituciones) {
             var items = [];
             items.push('<option value="ninguno">Ninguno</option>');
             $.each(data, function() {
-                items.push('<option value="' + $(this).prop('idPlantel') + '">' + $(this).prop('nombre') +'</option>');
+                items.push('<option value="' + $(this).prop('id') + '">' + $(this).prop('nombre') +'</option>');
             });
             //            console.log(items);
             // Cambiar lista de planteles

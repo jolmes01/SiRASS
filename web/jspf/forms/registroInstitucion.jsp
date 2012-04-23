@@ -18,11 +18,13 @@
                         <!-- Lista de instituciones -->
                         <%  OperacionesDB odb = new BaseDatos();
                             List<CInstitucion> instituciones = odb.getInstituciones();
-                            Iterator it = instituciones.iterator();
-                            while(it.hasNext()) {
-                                CInstitucion institucion = (CInstitucion) it.next(); %>
-                                <option value="<%= institucion.getId() %>"><%= institucion.getNombre() %></option>
-                        <%  } %>
+                            if (instituciones != null && !instituciones.isEmpty()) {
+                                Iterator it = instituciones.iterator();
+                                while (it.hasNext()) {
+                                    CInstitucion institucion = (CInstitucion) it.next();%>
+                        <option value="<%= institucion.getId()%>"><%= institucion.getNombre()%></option>
+                        <%      }
+                            } %>
                     </select>
                     <label class="radio inline">
                         <input type="radio" name="institucionOpc" id="institucionRadioLista" checked="checked"

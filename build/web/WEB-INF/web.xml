@@ -2,23 +2,23 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <listener>
         <description>ServletContextListener, ServletContextAttributeListener</description>
-        <listener-class>web.ContextListener</listener-class>
+        <listener-class>com.sirass.ContextListener</listener-class>
     </listener>
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>account.Login</servlet-class>
+        <servlet-class>com.sirass.servlet.Login</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Logout</servlet-name>
-        <servlet-class>account.Logout</servlet-class>
+        <servlet-class>com.sirass.servlet.Logout</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Signup</servlet-name>
-        <servlet-class>account.Signup</servlet-class>
+        <servlet-class>com.sirass.servlet.Signup</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>GetPlantelesAsJSON</servlet-name>
-        <servlet-class>servlet.GetPlantelesAsJSON</servlet-class>
+        <servlet-class>com.sirass.servlet.GetPlantelesAsJSON</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>

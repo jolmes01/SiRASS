@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.sirass.database.model.Plantel" table="CPlantel">
+        <id name="id" column="idCPlantel" type="integer">
+            <generator class="increment"/>
+        </id>
+        <property name="nombre"
+                  column="nombre"
+                  length="100"
+                  not-null="true"
+                  type="java.lang.String" />
+        <many-to-one name="institucion"
+                     class="com.sirass.database.model.CInstitucion"
+                     column="idInstitucion"
+                     not-null="true"
+                     unique="false"
+                     cascade="evict" />
+       <!-- del registro -->
+        <property column="creacion" name="creacion" not-null="true" type="java.util.Date"/>
+        <property column="ultimaModif" name="ultimaModif" not-null="true" type="java.util.Date"/>
+        <property column="modificadoPor" length="15" name="modificadoPor" not-null="true" type="java.lang.String" />
+    </class>
+</hibernate-mapping>
