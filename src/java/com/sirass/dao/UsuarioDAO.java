@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sirass.database.dao;
+package com.sirass.dao;
 
-import com.sirass.database.model.Usuario;
+import com.sirass.model.Usuario;
 
 /**
  *

@@ -1,6 +1,6 @@
-package com.sirass.database.dao;
+package com.sirass.dao;
 
-import com.sirass.database.model.Prestador;
+import com.sirass.model.Prestador;
 
 /**
  *

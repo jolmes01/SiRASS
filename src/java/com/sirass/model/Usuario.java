@@ -1,7 +1,9 @@
-package com.sirass.database.model;
+package com.sirass.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -14,12 +16,29 @@ public class Usuario implements Serializable {
     private Prestador prestador;
     private Institucion institucion;
     private Administrador administrador;
+    private Set<Rol> roles = new HashSet<Rol>(9);
     // Del registro
     private String modificadoPor;
     private Date ultimaModif;
     private Date creacion;
 
     public Usuario() {
+    }
+
+    public Usuario(String usuario, String password, Prestador prestador, Institucion institucion, Administrador administrador) {
+        this.usuario = usuario;
+        this.password = password;
+        this.prestador = prestador;
+        this.institucion = institucion;
+        this.administrador = administrador;
+    }
+
+    public Set<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Rol> roles) {
+        this.roles = roles;
     }
 
     public Date getCreacion() {

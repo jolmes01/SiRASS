@@ -1,4 +1,4 @@
-package com.sirass.database.model;
+package com.sirass.model;
 
 /**
  *

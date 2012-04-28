@@ -1,4 +1,8 @@
-package com.sirass.database.model;
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.sirass.model;
 
 import java.util.Date;
 
@@ -6,17 +10,15 @@ import java.util.Date;
  *
  * @author gomezhyuuga
  */
-public class Plantel {
+public class Rol {
 
-    private int id;
-    private String nombre;
-    private CInstitucion institucion;
+    private String nombreRol;
     // Del registro
     private String modificadoPor;
     private Date ultimaModif;
     private Date creacion;
 
-    public Plantel() {
+    public Rol() {
     }
 
     public Date getCreacion() {
@@ -27,22 +29,6 @@ public class Plantel {
         this.creacion = creacion;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public CInstitucion getInstitucion() {
-        return institucion;
-    }
-
-    public void setInstitucion(CInstitucion institucion) {
-        this.institucion = institucion;
-    }
-
     public String getModificadoPor() {
         return modificadoPor;
     }
@@ -51,19 +37,23 @@ public class Plantel {
         this.modificadoPor = modificadoPor;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public Date getUltimaModif() {
         return ultimaModif;
     }
 
     public void setUltimaModif(Date ultimaModif) {
         this.ultimaModif = ultimaModif;
+    }
+
+    public Rol(String nombreRol) {
+        this.nombreRol = nombreRol;
+    }
+
+    public String getNombreRol() {
+        return nombreRol;
+    }
+
+    public void setNombreRol(String nombreRol) {
+        this.nombreRol = nombreRol;
     }
 }

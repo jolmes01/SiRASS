@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.sirass.model.RolUsuario" table="MRolUsuario">
+        <composite-id>
+            <key-property column="usuario" type="java.lang.String" length="15" name="usuario" />
+            <key-property column="rol" type="java.lang.String" length="20" name="rol" />
+<!--            <key-many-to-one class="com.sirass.model.Rol" column="rol" name="role" />-->
+        </composite-id>
+        <!-- datos del registro -->
+        <property column="creacion" name="creacion" not-null="true" type="java.util.Date"/>
+        <property column="ultimaModif" name="ultimaModif" not-null="true" type="java.util.Date"/>
+        <property column="modificadoPor" length="15" name="modificadoPor" not-null="true" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

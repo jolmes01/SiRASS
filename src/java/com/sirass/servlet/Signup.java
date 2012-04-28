@@ -1,8 +1,8 @@
 package com.sirass.servlet;
 
-import com.sirass.database.dao.UsuarioDAO;
-import com.sirass.database.model.Prestador;
-import com.sirass.database.model.Usuario;
+import com.sirass.dao.UsuarioDAO;
+import com.sirass.model.Prestador;
+import com.sirass.model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;

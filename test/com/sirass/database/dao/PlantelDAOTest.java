@@ -4,8 +4,10 @@
  */
 package com.sirass.database.dao;
 
-import com.sirass.database.model.CInstitucion;
-import com.sirass.database.model.Plantel;
+import com.sirass.dao.PlantelDAO;
+import com.sirass.dao.CInstitucionDAO;
+import com.sirass.model.CInstitucion;
+import com.sirass.model.Plantel;
 import java.util.Date;
 import static org.junit.Assert.assertEquals;
 import org.junit.*;

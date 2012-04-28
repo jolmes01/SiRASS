@@ -56,6 +56,7 @@
     							Avisos
     						</a>
     					</li>
+                                        <li><a href="#inscripcion">Inscripci&oacute;n</a></li>
     					<li class="divider"></li>
     				</ul>
     			</nav>

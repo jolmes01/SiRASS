@@ -1,6 +1,6 @@
-package com.sirass.database.dao;
+package com.sirass.dao;
 
-import com.sirass.database.model.Plantel;
+import com.sirass.model.Plantel;
 
 /**
  *

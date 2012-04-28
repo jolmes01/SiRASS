@@ -1,6 +1,6 @@
-package com.sirass.database.dao;
+package com.sirass.dao;
 
-import com.sirass.database.HibernateUtil;
+import com.sirass.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
