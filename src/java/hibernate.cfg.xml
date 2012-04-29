@@ -14,6 +14,5 @@
         <mapping class="com.sirass.model.CInstitucion" resource="com/sirass/model/hbm/CInstitucion.hbm.xml"/>-->
 <!--    <mapping class="com.sirass.model.RolUsuario" resource="com/sirass/model/hbm/RolUsuario.hbm.xml"/>-->
     <mapping class="com.sirass.model.Rol" resource="com/sirass/model/hbm/Rol.hbm.xml"/>
-<!--    <mapping resource="com/sirass/model/hbm/Rol.hbm.xml"/>-->
   </session-factory>
 </hibernate-configuration>

@@ -45,8 +45,8 @@
             <div class="control-group">
                 <label class="control-label" for="promedio">Promedio:</label>
                 <div class="controls">
-                    <div class="input-prepend">
-                        <span class="add-on">#.#</span><input class="span1 right" type="text" id="promedio" name="promedio" maxlength="4" />
+                    <div class="input-append">
+                        <input class="span1 right" type="text" id="promedio" name="promedio" maxlength="4" /><span class="add-on">#.#</span>
                     </div>
                 </div>
             </div>

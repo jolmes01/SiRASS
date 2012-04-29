@@ -15,6 +15,14 @@
         <h1>Hello World!</h1>
         <div id="contenido">
             <h1>Control de Horas</h1>
+            <form action="../jspf/forms/dataForm.jsp">
+                <div id="formulario">
+                    <%@include file="/jspf/forms/controlHoras.jsp" %>
+                    <div class="form-actions">
+                        <button type="submit" name="submit" class="btn btn-primary btn-xlarge">Enviar</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </body>
 </html>

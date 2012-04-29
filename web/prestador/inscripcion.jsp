@@ -15,7 +15,7 @@
                 <%@include file="/jspf/forms/datosEscolares.jsp" %>
                 <%@include file="/jspf/forms/datosPrograma.jsp" %>
                 <div class="form-actions">
-                    <button type="submit" name="submit" class="btn btn-primary btn-large">Enviar</button>
+                    <button type="submit" name="submit" class="btn btn-primary btn-xlarge">Enviar</button>
                 </div>
             </div>
             </form>

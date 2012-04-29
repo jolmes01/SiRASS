@@ -2,12 +2,15 @@ package com.sirass.servlet;
 
 import com.sirass.dao.UsuarioDAO;
 import com.sirass.model.Prestador;
+import com.sirass.model.Rol;
 import com.sirass.model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -53,6 +56,9 @@ public class Signup extends HttpServlet {
             // Imprimir info
 //            prestador.imprimirInfo();
             Usuario usuario = new Usuario();
+            Set<Rol> roles = new HashSet<Rol>();
+            roles.add(new Rol("prestador"));
+            usuario.setRoles(roles);
             usuario.setUsuario(username);
             usuario.setPassword(password);
             usuario.setPrestador(prestador);
