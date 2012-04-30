@@ -1,7 +1,6 @@
 package com.sirass.dao;
 
 import com.sirass.HibernateUtil;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;

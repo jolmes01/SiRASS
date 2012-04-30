@@ -19,7 +19,6 @@ $(document).ready(function() {
     if (action == "Signup") {
         formRegistro.submit(envioHandler);
     }
-
 });
 
 function envioHandler(e) {
@@ -66,20 +65,19 @@ function envioHandler(e) {
             console.error("########## ERROR #############");
             console.log("errorCode: " + jqXHR.status);
             console.log("textStatus: " + textStatus);
+            console.log(jqXHR);
             var msg = "Error desconocido. Intenta nuevamente.";
+            msg = jqXHR.responseText
             // Detectar si se realizó el registro correctamente
             if (jqXHR.status == 0) { // Hubo un error con la BD
                 msg = "Hubo un problema con la base de datos.";
                 msg += " Intenta nuevamente.";
             }
-            if (jqXHR.status == 1062) { // Error. Username repetido
-                msg = "El usuario que escogiste ya existe. Utiliza otro."
-            }
             // Insertar mensaje en modal
             modalERROR
-            .children('.modal-body')
-            .children('p')
-            .text(msg);
+                .children('.modal-body')
+                .children('p')
+                .text(msg);
             // Mostrar modalDialog
             modalERROR.modal('show');
             // Regresar el botón a su estado original

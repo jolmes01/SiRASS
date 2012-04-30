@@ -1,7 +1,6 @@
 package com.sirass.servlet;
 
-import com.sirass.dao.CInstitucionDAO;
-import com.sirass.dao.PlantelDAO;
+import com.sirass.dao.DAO;
 import com.sirass.dao.UsuarioDAO;
 import com.sirass.model.*;
 import java.io.IOException;
@@ -35,62 +34,81 @@ public class Signup extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     int status = 0;
+    Date curDate = new Date(System.currentTimeMillis());
+    String modificadoPor = "system";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/plain;charset=utf-8");
-        // Crear objetos
-        Usuario usuario = new Usuario();
-        Set<Rol> roles = new HashSet<Rol>();
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-        status = 1;
-        // TODO 0) Validar datos
-        // 1) Obtener parámetros genéricos: usuario, pass y tipo
         String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String userType = request.getParameter("userType");
+        // Comprobar si el usuario existe
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        // Continuar solo si no existe
+        if (!usuarioDAO.exists(username)) {
+            // Crear objetos
+            Usuario usuario = new Usuario();
+            Set<Rol> roles = new HashSet<Rol>();
+            DAO dao = new DAO();
 
-        usuario.setUsuario(username);
-        usuario.setPassword(password);
-        usuario.setModificadoPor("system");
-        usuario.setUltimaModif(new Date(System.currentTimeMillis()));
-        usuario.setCreacion(new Date(System.currentTimeMillis()));
+            // TODO 0) Validar datos
+            // 1) Obtener parámetros genéricos: usuario, pass y tipo
+            String password = request.getParameter("password");
+            String userType = request.getParameter("userType");
 
-        // 2) Detectar el tipo de usuario y crear objeto
-        if (userType.compareTo("prestador") == 0) { // Prestador
-            // TODO 2.1) Validar datos prestador
-            // 2.2) Guardar parámetros del prestador y crear objeto
-            Prestador prestador = crearPrestador(request);
-            prestador.setModificadoPor("system");
-            prestador.setUltimaModif(new Date(System.currentTimeMillis()));
-            prestador.setCreacion(new Date(System.currentTimeMillis()));
+            // Establecer ajustas genéricos
+            usuario.setUsuario(username);
+            usuario.setPassword(password);
+            usuario.setModificadoPor(modificadoPor);
+            usuario.setUltimaModif(curDate);
+            usuario.setCreacion(curDate);
 
-            // Roles
-            roles.add(new Rol("prestador"));
-            usuario.setRoles(roles);
-            usuario.setPrestador(prestador);
+            // 2) Detectar el tipo de usuario y crear objeto
+            if (userType.compareTo("prestador") == 0) { // Prestador
+                // TODO 2.1) Validar datos prestador
+                // Roles
+                roles.add(new Rol("prestador"));
+                usuario.setRoles(roles);
 
-            // 2.4) Dar de alta al prestador
-            status = usuarioDAO.insert(usuario);
-        } else if (userType.compareTo("institucion") == 0) {    // Institucion
-            // TODO 2.1) Validar datos institucion
-            // Roles
-            roles.add(new Rol("institucion"));
-            usuario.setRoles(roles);
+                // 2.2) Guardar parámetros del prestador y crear objeto
+                Prestador prestador = crearPrestador(request);
+                prestador.setModificadoPor(modificadoPor);
+                prestador.setUltimaModif(curDate);
+                prestador.setCreacion(curDate);
 
-            // 2.2) Guardar parámetros de la institución y crear objeto
-            Institucion institucion = crearInstitucion(request);
-            institucion.setModificadoPor("system");
-            institucion.setUltimaModif(new Date(System.currentTimeMillis()));
-            institucion.setCreacion(new Date(System.currentTimeMillis()));
+                usuario.setPrestador(prestador);
 
-            usuario.setInstitucion(institucion);
-            // Registrar
-            status = usuarioDAO.insert(usuario);
-            status = 1;
+                // Imprimir información
+                prestador.getInfo();
+            } else if (userType.compareTo("institucion") == 0) {    // Institucion
+                // TODO 2.1) Validar datos institucion
+                // Roles
+                roles.add(new Rol("institucion"));
+                usuario.setRoles(roles);
+
+                // 2.2) Guardar parámetros de la institución y crear objeto
+                Institucion institucion = crearInstitucion(request);
+
+                institucion.setModificadoPor(modificadoPor);
+                institucion.setUltimaModif(curDate);
+                institucion.setCreacion(curDate);
+
+                usuario.setInstitucion(institucion);
+
+                // Imprimir información
+                institucion.getInfo();
+            }
+            // Imprimir info de usuario
+            usuario.getInfo();
+            // Registrar usuario
+            status = dao.insert(usuario);
+            // Devolver estado del registro
+            // status == 1 -> OK, status != 1 -> ERROR
+            System.out.println("status: " + status);
+        } else {
+            status = 1062;
         }
-//        response.sendError(status);
         if (status == 1) {
             PrintWriter out = response.getWriter();
             try {
@@ -99,10 +117,16 @@ public class Signup extends HttpServlet {
                 out.close();
             }
         } else {
-            response.sendError(status);
+            response.setStatus(400);
+            PrintWriter out = response.getWriter();
+            try {
+                out.print("El usuario ya existe. Utiliza otro.");
+            } finally {
+                out.close();
+            }
         }
     }
-
+  
     private Prestador crearPrestador(HttpServletRequest request) {
         Prestador prestador = new Prestador();
         String nombre = request.getParameter("nombre");
@@ -149,8 +173,9 @@ public class Signup extends HttpServlet {
     }
 
     private Institucion crearInstitucion(HttpServletRequest request) {
+        DAO dao = new DAO();
         Institucion institucion = new Institucion();
-        // IDs
+        // IDs en caso de que ya existan
         String idCInstitucionStr = request.getParameter("institucionList");
         String idPlantelStr = request.getParameter("plantelesList");
 
@@ -188,29 +213,34 @@ public class Signup extends HttpServlet {
         } else if (instOpc == 1) { // Si la institución no existe registrar nueva
             CInstitucion cInstitucion = new CInstitucion();
             cInstitucion.setNombre(nombreInstitucion);
-            cInstitucion.setModificadoPor("system");
-            cInstitucion.setUltimaModif(new Date(System.currentTimeMillis()));
-            cInstitucion.setCreacion(new Date(System.currentTimeMillis()));
+
+            cInstitucion.setModificadoPor(modificadoPor);
+            cInstitucion.setUltimaModif(curDate);
+            cInstitucion.setCreacion(curDate);
+
             // Registrar
-            CInstitucionDAO dao = new CInstitucionDAO();
             status = dao.insert(cInstitucion);
+            // Establecer el id de la institución registrada
+            System.out.println("idCInstitucion registrada: " + cInstitucion.getIdCInstitucion());
             institucion.setIdCInstitucion(cInstitucion.getIdCInstitucion());
         }
         // Si plantel está en la lista
         if (plantelOpc == 0 && idPlantelStr != null) {
             int idPlantel = Integer.parseInt(idPlantelStr);
             institucion.setIdPlantel(idPlantel);
-        } // Si no está en la lista
+        } // Si no está en la lista, registrar
         else if (plantelOpc == 1) {
             Plantel plantel = new Plantel();
             plantel.setIdCInstitucion(institucion.getIdCInstitucion());
             plantel.setNombre(nombrePlantel);
-            plantel.setModificadoPor("system");
-            plantel.setUltimaModif(new Date(System.currentTimeMillis()));
-            plantel.setCreacion(new Date(System.currentTimeMillis()));
+
+            plantel.setModificadoPor(modificadoPor);
+            plantel.setUltimaModif(curDate);
+            plantel.setCreacion(curDate);
+
             // Registrar
-            PlantelDAO daoP = new PlantelDAO();
-            status = daoP.insert(plantel);
+            status = dao.insert(plantel);
+            System.out.println("idPlantel registrado: " + plantel.getIdPlantel());
             institucion.setIdPlantel(plantel.getIdPlantel());
         }
         return institucion;

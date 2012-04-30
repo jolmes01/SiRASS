@@ -25,12 +25,16 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(String usuario, String password, Prestador prestador, Institucion institucion, Administrador administrador) {
+    public Usuario(String usuario, String password) {
         this.usuario = usuario;
         this.password = password;
-        this.prestador = prestador;
-        this.institucion = institucion;
-        this.administrador = administrador;
+    }
+    
+    public void getInfo() {
+        System.out.println("## Información de clase: " + this.getClass().getSimpleName());
+        System.out.println("usuario: " + this.usuario);
+        System.out.println("password: " + this.password);
+        System.out.println("roles: " + roles.toString());
     }
 
     public Set<Rol> getRoles() {

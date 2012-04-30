@@ -4,7 +4,12 @@
  */
 package com.sirass.dao;
 
+import com.sirass.HibernateUtil;
 import com.sirass.model.Usuario;
+import org.hibernate.FetchMode;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -21,5 +26,32 @@ public class UsuarioDAO extends DAO {
      */
     public int insert(Usuario usuario) {
         return super.insert(usuario);
+    }
+    
+    /**
+     * Comprueba si un usuario determinado existe
+     * @param username - El nombre de usuario a comprobar
+     * @return true si existe, false si no existe
+     */
+    public boolean exists(String username) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        // Comprobar si el usuario existe
+        Usuario usuario = (Usuario) session.createCriteria(Usuario.class)
+                .add(Restrictions.eq("usuario", username))
+                .setFetchMode("prestador", FetchMode.SELECT)
+                .setFetchMode("institucion", FetchMode.SELECT)
+                .setFetchMode("administrador", FetchMode.SELECT)
+                .setFetchMode("roles", FetchMode.SELECT)
+                .uniqueResult();
+        transaction.commit();
+        session.close();
+        if (usuario != null) {
+            System.out.println("El usuario existe!");
+            return true;
+        } else {
+            System.out.println("El usuario no existe!");
+            return false;
+        }
     }
 }

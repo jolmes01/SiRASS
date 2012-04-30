@@ -32,6 +32,27 @@ public class Prestador {
 
     public Prestador() {
     }
+    
+    public void getInfo() {
+        System.out.println("## Información de clase: " + this.getClass().getSimpleName());
+        System.out.println("idPrestador: " + this.idPrestador);
+        System.out.println("nControl: " + this.nControl);
+        System.out.println("nombre: " + this.nombre);
+        System.out.println("aPaterno: " + this.aPaterno);
+        System.out.println("aMaterno: " + this.aMaterno);
+        System.out.println("emaiL: " + this.email);
+        System.out.println("nacimiento: " + this.nacimiento.toString());
+        System.out.println("sexo: " + this.sexo);
+        System.out.println("dCalle: " + this.dCalle);
+        System.out.println("dNumInt: " + this.dNumInt);
+        System.out.println("dNumExt: " + this.dNumExt);
+        System.out.println("dCP: " + this.dCP);
+        System.out.println("dDelegacion: " + this.dDelegacion);
+        System.out.println("dColonia: " + this.dColonia);
+        System.out.println("telCasa: " + this.telCasa);
+        System.out.println("telCel: " + this.telCel);
+        System.out.println("difundir: " + this.difundir);
+    }
 
     public Date getCreacion() {
         return creacion;
