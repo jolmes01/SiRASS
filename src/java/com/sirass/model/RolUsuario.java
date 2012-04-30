@@ -4,13 +4,14 @@
  */
 package com.sirass.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author gomezhyuuga
  */
-public class RolUsuario {
+public class RolUsuario implements Serializable {
 
     private String usuario;
     private String rol;

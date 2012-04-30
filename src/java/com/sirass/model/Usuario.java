@@ -16,7 +16,7 @@ public class Usuario implements Serializable {
     private Prestador prestador;
     private Institucion institucion;
     private Administrador administrador;
-    private Set<Rol> roles = new HashSet<Rol>(9);
+    private Set<Rol> roles = new HashSet<Rol>(0);
     // Del registro
     private String modificadoPor;
     private Date ultimaModif;

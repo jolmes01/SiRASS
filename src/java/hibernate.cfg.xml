@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/SiRASS</property>
-    <property name="hibernate.connection.username">skyforge</property>
-    <property name="hibernate.connection.password">skyforge</property>
-    <property name="hibernate.show_sql">true</property>
-    <mapping class="com.sirass.model.Usuario" resource="com/sirass/model/hbm/Usuario.hbm.xml"/>
-    <mapping class="com.sirass.model.Prestador" resource="com/sirass/model/hbm/Prestador.hbm.xml"/>
-    <!--        <mapping class="com.sirass.model.Plantel" resource="com/sirass/model/hbm/Plantel.hbm.xml"/>
-        <mapping class="com.sirass.model.CInstitucion" resource="com/sirass/model/hbm/CInstitucion.hbm.xml"/>-->
-<!--    <mapping class="com.sirass.model.RolUsuario" resource="com/sirass/model/hbm/RolUsuario.hbm.xml"/>-->
-    <mapping class="com.sirass.model.Rol" resource="com/sirass/model/hbm/Rol.hbm.xml"/>
-  </session-factory>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/SiRASS</property>
+        <property name="hibernate.connection.username">skyforge</property>
+        <property name="hibernate.connection.password">skyforge</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.generate_statistics">false</property>
+        <property name="hibernate.use_sql_comments">false</property>
+    <!-- Mapeo de clases -->
+        <mapping class="com.sirass.model.Usuario" resource="com/sirass/model/hbm/Usuario.hbm.xml"/>
+        <mapping class="com.sirass.model.Rol" resource="com/sirass/model/hbm/Rol.hbm.xml"/>
+        <mapping class="com.sirass.model.Prestador" resource="com/sirass/model/hbm/Prestador.hbm.xml"/>
+        <mapping class="com.sirass.model.Institucion" resource="com/sirass/model/hbm/Institucion.hbm.xml"/>
+        <mapping class="com.sirass.model.CInstitucion" resource="com/sirass/model/hbm/CInstitucion.hbm.xml"/>
+        <mapping class="com.sirass.model.Plantel" resource="com/sirass/model/hbm/Plantel.hbm.xml"/>
+    </session-factory>
 </hibernate-configuration>

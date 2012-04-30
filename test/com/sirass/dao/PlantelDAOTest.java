@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sirass.database.dao;
+package com.sirass.dao;
 
 import com.sirass.dao.PlantelDAO;
 import com.sirass.dao.CInstitucionDAO;
@@ -48,7 +48,7 @@ public class PlantelDAOTest {
         
         plantel = new Plantel();
         CInstitucion institucion = new CInstitucion();
-        institucion.setId(1);
+        institucion.setIdCInstitucion(1);
         institucion.setNombre("Existente no deberia modificarse nombre");
         institucion.setModificadoPor("system");
         institucion.setCreacion(new Date(System.currentTimeMillis()));
@@ -58,7 +58,7 @@ public class PlantelDAOTest {
         plantel.setModificadoPor("system");
         plantel.setCreacion(new Date(System.currentTimeMillis()));
         plantel.setUltimaModif(new Date(System.currentTimeMillis()));
-        plantel.setInstitucion(institucion);
+//        plantel.setInstitucion(institucion);
 
         int expResult = 1;
         // Insertar
@@ -73,7 +73,7 @@ public class PlantelDAOTest {
         
         plantel = new Plantel();
         CInstitucion institucion = new CInstitucion();
-        institucion.setId((int) (Math.random() * 100));
+        institucion.setIdCInstitucion((int) (Math.random() * 100));
         institucion.setNombre("No existente " + (int) (Math.random() * 100));
         institucion.setModificadoPor("system");
         institucion.setCreacion(new Date(System.currentTimeMillis()));
@@ -83,7 +83,7 @@ public class PlantelDAOTest {
         plantel.setModificadoPor("system");
         plantel.setCreacion(new Date(System.currentTimeMillis()));
         plantel.setUltimaModif(new Date(System.currentTimeMillis()));
-        plantel.setInstitucion(institucion);
+//        plantel.setInstitucion(institucion);
         CInstitucionDAO cInstitucionDAO = new CInstitucionDAO();
         cInstitucionDAO.insert(institucion);
 

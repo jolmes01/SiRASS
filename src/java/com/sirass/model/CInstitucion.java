@@ -1,16 +1,19 @@
 package com.sirass.model;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
  * @author gomezhyuuga
  */
-public class CInstitucion {
+public class CInstitucion implements Serializable {
 
-    private int id;
+    private int idCInstitucion;
     private String nombre;
+    private Set<Plantel> planteles = new HashSet<Plantel>(0);
     // Del registro
     private String modificadoPor;
     private Date ultimaModif;
@@ -19,20 +22,32 @@ public class CInstitucion {
     public CInstitucion() {
     }
 
+    public CInstitucion(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Set<Plantel> getPlanteles() {
+        return planteles;
+    }
+
+    public int getIdCInstitucion() {
+        return idCInstitucion;
+    }
+
+    public void setIdCInstitucion(int idCInstitucion) {
+        this.idCInstitucion = idCInstitucion;
+    }
+
+    public void setPlanteles(Set<Plantel> planteles) {
+        this.planteles = planteles;
+    }
+
     public Date getCreacion() {
         return creacion;
     }
 
     public void setCreacion(Date creacion) {
         this.creacion = creacion;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getModificadoPor() {

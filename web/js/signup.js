@@ -1,7 +1,7 @@
 var errores = "";
 $(document).ready(function() {
     console.log("It works!");
-//    llenarForms();
+    //    llenarForms();
     // Detectar cuando se pulsa Prestador-Institución
     $('#btnPrestador, #btnInstitucion').on('click', function() {
         // Obtener botón pulsado
@@ -16,7 +16,9 @@ $(document).ready(function() {
     // Evitar enviar el formulario mediante redirección
     var formRegistro = $('#registro');
     var action = formRegistro.attr('action');
-    formRegistro.submit(envioHandler);
+    if (action == "Signup") {
+        formRegistro.submit(envioHandler);
+    }
 
 });
 
@@ -43,7 +45,7 @@ function envioHandler(e) {
     formRegistro.find('#nacimiento').val(nacimiento);
         
     // Hacer validaciones del form
-//    enviar = validarRegistro(formRegistro);
+    //    enviar = validarRegistro(formRegistro);
         
     // Solo hacer el registro si los campos están ok
     if (enviar) {
@@ -69,7 +71,8 @@ function envioHandler(e) {
             if (jqXHR.status == 0) { // Hubo un error con la BD
                 msg = "Hubo un problema con la base de datos.";
                 msg += " Intenta nuevamente.";
-            } if (jqXHR.status == 1062) { // Error. Username repetido
+            }
+            if (jqXHR.status == 1062) { // Error. Username repetido
                 msg = "El usuario que escogiste ya existe. Utiliza otro."
             }
             // Insertar mensaje en modal
@@ -138,7 +141,7 @@ function obtenerPlanteles(instituciones) {
             var items = [];
             items.push('<option value="ninguno">Ninguno</option>');
             $.each(data, function() {
-                items.push('<option value="' + $(this).prop('id') + '">' + $(this).prop('nombre') +'</option>');
+                items.push('<option value="' + $(this).prop('idPlantel') + '">' + $(this).prop('nombre') +'</option>');
             });
             //            console.log(items);
             // Cambiar lista de planteles

@@ -8,6 +8,8 @@ import com.google.gson.Gson;
 import com.sirass.OLD.BaseDatos;
 import com.sirass.OLD.OperacionesDB;
 import com.sirass.OLD.Plantel;
+import com.sirass.dao.CInstitucionDAO;
+import com.sirass.model.CInstitucion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -39,11 +41,13 @@ public class GetPlantelesAsJSON extends HttpServlet {
         // 1) Identificar la institución sobre la cuál se desean obtener los planteles
         int idInstitucion = Integer.parseInt(request.getParameter("idInstitucion"));
         // 2) Obtener lista de planteles
-        OperacionesDB odb = new BaseDatos();
-        List<Plantel> planteles = odb.getPlantelesInstitucion(idInstitucion);
-        // Devolver planteles como JSON
+        CInstitucionDAO dao = new CInstitucionDAO();
+        CInstitucion cInstitucion = dao.getById(idInstitucion);
+        
+        // 3) Devolver planteles como JSON
         Gson gson = new Gson();
-        String jsonOutString = gson.toJson(planteles);
+        String jsonOutString = gson.toJson(cInstitucion.getPlanteles());
+        System.out.println(jsonOutString);
         PrintWriter out = response.getWriter();
         try {
             out.println(jsonOutString);

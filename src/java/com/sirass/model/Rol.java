@@ -4,13 +4,14 @@
  */
 package com.sirass.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author gomezhyuuga
  */
-public class Rol {
+public class Rol implements Serializable {
 
     private String nombreRol;
     // Del registro
@@ -19,6 +20,10 @@ public class Rol {
     private Date creacion;
 
     public Rol() {
+    }
+
+    public Rol(String nombreRol) {
+        this.nombreRol = nombreRol;
     }
 
     public Date getCreacion() {
@@ -43,10 +48,6 @@ public class Rol {
 
     public void setUltimaModif(Date ultimaModif) {
         this.ultimaModif = ultimaModif;
-    }
-
-    public Rol(String nombreRol) {
-        this.nombreRol = nombreRol;
     }
 
     public String getNombreRol() {

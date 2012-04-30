@@ -2,11 +2,11 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
   <class name="com.sirass.model.Plantel" table="CPlantel">
-    <id column="idCPlantel" name="id" type="integer">
+    <id column="idCPlantel" name="idPlantel" type="integer">
       <generator class="increment"/>
     </id>
     <property column="nombre" length="100" name="nombre" not-null="true" type="java.lang.String"/>
-    <many-to-one cascade="evict" class="com.sirass.model.CInstitucion" column="idInstitucion" name="institucion" not-null="true" unique="false"/>
+    <property column="idCInstitucion" length="11" name="idCInstitucion" not-null="true" type="integer"/>
     <!-- del registro -->
     <property column="creacion" name="creacion" not-null="true" type="java.util.Date"/>
     <property column="ultimaModif" name="ultimaModif" not-null="true" type="java.util.Date"/>

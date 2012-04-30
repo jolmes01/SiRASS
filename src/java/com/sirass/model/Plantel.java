@@ -8,9 +8,9 @@ import java.util.Date;
  */
 public class Plantel {
 
-    private int id;
+    private int idPlantel;
+    private int idCInstitucion;
     private String nombre;
-    private CInstitucion institucion;
     // Del registro
     private String modificadoPor;
     private Date ultimaModif;
@@ -27,20 +27,20 @@ public class Plantel {
         this.creacion = creacion;
     }
 
-    public int getId() {
-        return id;
+    public int getIdCInstitucion() {
+        return idCInstitucion;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCInstitucion(int idCInstitucion) {
+        this.idCInstitucion = idCInstitucion;
     }
 
-    public CInstitucion getInstitucion() {
-        return institucion;
+    public int getIdPlantel() {
+        return idPlantel;
     }
 
-    public void setInstitucion(CInstitucion institucion) {
-        this.institucion = institucion;
+    public void setIdPlantel(int idPlantel) {
+        this.idPlantel = idPlantel;
     }
 
     public String getModificadoPor() {
