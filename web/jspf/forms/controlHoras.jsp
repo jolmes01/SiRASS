@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!-- Datos del alumno
 ================================================== -->
 <div class="row">
@@ -115,33 +116,44 @@
     <div class="span8">
         <fieldset>
             <legend>Registra tus horas</legend>
+            <div class="form-actions">
+                <button class="btn btn-primary btn-xlarge" type="button" id="addHr">Agregar</button>
+                <button class="btn btn-primary btn-xlarge" type="button">Llenado inteligente</button>
+            </div>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>N&deg;</th>
                         <th>Fecha</th>
                         <th>Hora entrada</th>
-                        <th>Hora salida</th>
+                        <th colspan="2">Hora salida</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <td colspan="2">2</td>
-                        <td>2</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
                         <th colspan="2">Hrs acumuladas</th>
                         <th>Meses anteriores</th>
-                        <th>Este mes</th>
+                        <th colspan="2">Este mes</th>
                     </tr>
                 </tfoot>
-                <tbody>
-                    <tr>
-                        <td>algo</td>
-                        <td>algo</td>
-                        <td>algo</td>
-                        <td>algo</td>
+                <tbody id="hrs">
+                    <tr data-horaNum="1">
+                        <td>1</td>
+                        <td>
+                            <input type="text" id="fecha1" name="fecha1"
+                                   class="input-small" readonly="readonly"/>
+                        </td>
+                        <td>
+                            <input type="text" id="hEntrada1" name="hEntrada1"
+                                   class="input-small" readonly="readonly"/>
+                        </td>
+                        <td>
+                            <input type="text" id="hSalida1" name="hSalida1"
+                                   class="input-small" readonly="readonly"/>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" type="button" id="elim1">Eliminar</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
