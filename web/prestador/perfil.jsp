@@ -16,7 +16,9 @@
     	<div class="row-fluid">
     		<!-- Sidebar
     		================================================== -->
-                <jsp:include page="jspf/sidebar.jsp"></jsp:include>
+                <jsp:include page="jspf/sidebar.jsp">
+                    <jsp:param name="active" value="1" />
+                </jsp:include>
     		<!-- Contenido
     		================================================== -->
 

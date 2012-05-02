@@ -30,7 +30,7 @@ public class DAO {
             transaction = session.beginTransaction();
             session.save(obj);
             transaction.commit();
-            status = 1;
+            return 1;
         } catch (ConstraintViolationException e) {
             transaction.rollback();
             System.out.println("#### --- ####");
@@ -41,6 +41,5 @@ public class DAO {
         } finally {
             session.close();
         }
-        return status;
     }
 }

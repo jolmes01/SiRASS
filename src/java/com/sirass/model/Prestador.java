@@ -1,5 +1,7 @@
 package com.sirass.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -104,6 +106,11 @@ public class Prestador {
 
     public Date getNacimiento() {
         return nacimiento;
+    }
+    
+    public String getNacimientoStr() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("DD-MM-yyyy");
+        return dateFormat.format(this.getNacimiento());
     }
 
     public void setNacimiento(Date nacimiento) {

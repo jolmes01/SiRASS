@@ -54,4 +54,31 @@ public class UsuarioDAO extends DAO {
             return false;
         }
     }
+    
+    /**
+     * Devuelve un usuario
+     * @param username - El nombre de usuario a obtener
+     * @return  - El usuario junto con sus objetos prestador, institucion o admin
+     */
+    public Usuario getByUsername(String username) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        // Comprobar si el usuario existe
+        Usuario usuario = (Usuario) session.createCriteria(Usuario.class)
+                .add(Restrictions.eq("usuario", username))
+                .setFetchMode("prestador", FetchMode.JOIN)
+                .setFetchMode("institucion", FetchMode.SELECT)
+                .setFetchMode("administrador", FetchMode.SELECT)
+                .setFetchMode("roles", FetchMode.JOIN)
+                .uniqueResult();
+        transaction.commit();
+        session.close();
+        if (usuario != null) {
+            System.out.println("El usuario existe!");
+            return usuario;
+        } else {
+            System.out.println("El usuario no existe!");
+            return null;
+        }
+    }
 }

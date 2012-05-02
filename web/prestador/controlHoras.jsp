@@ -1,12 +1,6 @@
-<%-- 
-    Document   : controlHoras
-    Created on : 06-abr-2012, 9:27:36
-    Author     : gomezhyuuga
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <jsp:include page="/jspf/head.jsp">
             <jsp:param name="title" value="ControlHoras"/>
@@ -16,7 +10,9 @@
         <style type="text/css">
             table tbody tr td {
                 text-align: center !important;
-                padding-top: 16px !important;
+            }
+            table th {
+                text-align: center !important;
             }
             table tbody tr td input[readonly="readonly"] {
                 background-color: #fff;
@@ -40,19 +36,19 @@
                 <!-- Sidebar
                 ================================================== -->
                 <jsp:include page="jspf/sidebar.jsp">
-                    <jsp:param name="active" value="0" />
+                    <jsp:param name="active" value="4" />
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
                 <div class="container bg span7">
                     <div id="contenido">
                         <h1>Control de Horas</h1>
-                        <form action="../jspf/forms/dataForm.jsp">
+                        <form action="../jspf/forms/dataForm.jsp" method="post">
                             <div id="formulario">
                                 <%@include file="/jspf/forms/controlHoras.jsp" %>
                                 <div class="form-actions">
-                                    <button type="submit" name="submit" class="btn btn-primary btn-large">Enviar</button>
-                                    <button type="reset" name="reset" class="btn btn-primary btn-large">Limpiar campos</button>
+                                    <button type="submit" class="btn btn-primary btn-large">Enviar</button>
+                                    <button type="reset" id="reset" class="btn btn-primary btn-large">Limpiar campos</button>
                                 </div>
                             </div>
                         </form>

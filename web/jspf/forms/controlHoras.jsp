@@ -1,4 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!-- Datos del alumno
 ================================================== -->
 <div class="row">
@@ -50,60 +49,21 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="fInicioDia">Del:</label>
+                <label class="control-label" for="fInicio">Del:</label>
                 <div class="controls">
-                    <select class="span1" name="fInicioDia" id="fInicioDia">
-                        <option value="0">D&iacute;a</option>
-                        <% for (int i = 1; i <= 31; i++) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <select class="span1" name="fInicioMes" id="fInicioMes">
-                        <option value="0">Mes</option>
-                        <% for (int i = 1; i <= 12; i++) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <select class="span1" name="fInicioAno" id="fInicioAno">
-                        <option value="0">A&ntilde;o</option>
-                        <% int curYear = (new java.util.GregorianCalendar()).get(java.util.Calendar.YEAR);
-                            for (int i = curYear; i >= curYear - 5; i--) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <!-- input oculto fechaInicio -->
-                    <input type="hidden" name="fInicio" id="fInicio" />
+                    <input type="text" name="fInicio" id="fInicio" class="input-small center" />
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="fTerminoDia">Al:</label>
+                <label class="control-label" for="fTermino">Al:</label>
                 <div class="controls">
-                    <select class="span1" name="fTerminoDia" id="fTerminoDia">
-                        <option value="0">D&iacute;a</option>
-                        <% for (int i = 1; i <= 31; i++) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <select class="span1" name="fTerminoMes" id="fTerminoMes">
-                        <option value="0">Mes</option>
-                        <% for (int i = 1; i <= 12; i++) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <select class="span1" name="fTerminoAno" id="fTerminoAno">
-                        <option value="0">A&ntilde;o</option>
-                        <% for (int i = curYear; i >= curYear - 5; i--) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <!-- input oculto fechaInicio -->
-                    <input type="hidden" name="fTermino" id="fTermino" />
+                    <input type="text" name="fTermino" id="fTermino" class="input-small center" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="supervisor">Supervisor o jefe inmediato:</label>
+                <div class="controls">
+                    <input type="text" name="supervisor" id="supervisor" />
                 </div>
             </div>
         </fieldset>
@@ -118,7 +78,7 @@
             <legend>Registra tus horas</legend>
             <div class="form-actions">
                 <button class="btn btn-primary btn-xlarge" type="button" id="addHr">Agregar</button>
-                <button class="btn btn-primary btn-xlarge" type="button">Llenado inteligente</button>
+                <button class="btn btn-primary btn-xlarge" type="button" id="smartFill">Llenado inteligente</button>
             </div>
             <table class="table table-bordered table-striped">
                 <thead>
@@ -126,14 +86,16 @@
                         <th>N&deg;</th>
                         <th>Fecha</th>
                         <th>Hora entrada</th>
-                        <th colspan="2">Hora salida</th>
+                        <th>Hora salida</th>
+                        <th>Horas d&iacute;a</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th colspan="2">Hrs acumuladas</th>
                         <th>Meses anteriores</th>
-                        <th colspan="2">Este mes</th>
+                        <th colspan="3">Este mes</th>
                     </tr>
                 </tfoot>
                 <tbody id="hrs">
@@ -151,8 +113,11 @@
                             <input type="text" id="hSalida1" name="hSalida1"
                                    class="input-small" readonly="readonly"/>
                         </td>
+                        <td id="suma1">22</td>
                         <td>
-                            <button class="btn btn-danger" type="button" id="elim1">Eliminar</button>
+                            <button class="btn btn-danger" type="button" id="elim1">
+                                <i class="icon-remove icon-white"></i>
+                            </button>
                         </td>
                     </tr>
                 </tbody>

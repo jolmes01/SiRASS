@@ -36,29 +36,7 @@
             <div class="control-group">
                 <label class="control-label" for="nDia">Fecha de nacimiento:</label>
                 <div class="controls">
-                    <select class="span1" name="nDia" id="nDia">
-                        <option value="0">D&iacute;a</option>
-                        <% for (int i = 1; i <= 31; i++) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <select class="span1" name="nMes" id="nMes">
-                        <option value="0">Mes</option>
-                        <% for (int i = 1; i <= 12; i++) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <select class="span1" name="nAno" id="nAno">
-                        <option value="0">A&ntilde;o</option>
-                        <% for (int i = 2000; i >= 1960; i--) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <!-- input oculto nacimiento -->
-                    <input type="hidden" name="nacimiento" id="nacimiento" />
+                    <input type="text" name="nacimiento" id="nacimiento" class="input-small center" />
                 </div>
             </div>
             <div class="control-group">

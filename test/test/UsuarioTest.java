@@ -5,6 +5,7 @@
 package test;
 
 import com.sirass.dao.UsuarioDAO;
+import com.sirass.model.Usuario;
 
 /**
  *
@@ -18,6 +19,10 @@ public class UsuarioTest {
     public static void main(String[] args) {
         UsuarioDAO dao = new UsuarioDAO();
         
-        System.out.println(dao.exists("gomezhsyuuga"));
+        System.out.println(dao.exists("gomezhyuuga"));
+        
+        Usuario usuario = dao.getByUsername("gomezhyuuga1234");
+        usuario.getInfo();
+        usuario.getPrestador().getInfo();
     }
 }
