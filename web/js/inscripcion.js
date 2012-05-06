@@ -1,5 +1,28 @@
 $(document).ready(function() {
+    $.datepicker.setDefaults({
+        dateFormat: "dd/mm/yy"
+    });
+    $('#fInicio, #fTermino').datepicker();
+    $('#horaEntrada, #horaSalida').timepicker({});
     
+    var practicasDiv = $('#practicas');
+    practicasDiv.hide();
+    var practicasInputs = practicasDiv.contents().find('input');
+    
+    $('#ss, #pp').on('click', function() {
+        var button = $(this);
+        // Comprobar si ya estaba seleccionado
+        if (!button.hasClass('active')) {
+            // Mostrar u ocultar sección de prácticas profesionales
+            if (button.attr('id') == "pp") {
+                practicasDiv.slideDown();
+            } else {
+                practicasDiv.slideUp();
+                // Restablecer los valores de los campos en caso de ocultarlo
+                practicasInputs.val('');
+            }
+        }
+    });
 });
 
 
@@ -67,6 +90,11 @@ function switchRadio(radio) {
         institucionesList.prop('selectedIndex', '0');
         // Habilitar inputText
         nombreInstitucion.removeAttr('disabled');
+        // Cambiar la lista de planteles
+        actualizarSelect(plantelesList, []);
+        $('#plantelRadioOtro').prop('checked', 'checked');
+        nombrePlantel.val('')
+        nombrePlantel.removeAttr('disabled');
     } else if (radio.id == "plantelRadioLista") {
         // Habilitar select
         plantelesList.removeAttr('disabled');

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.sirass.model.ControlHoras" table="EControlHoras">
+        <id column="idControlHoras" name="idControlHoras" type="integer" length="11">
+            <generator class="native" />
+        </id>
+        
+        <property column="idInscripcion" name="idInscripcion" type="integer" length="11" not-null="true" />
+        <property column="nReporte" name="nReporte" type="short" length="4" not-null="true" />
+        <property column="fechaInicio" name="fechaInicio" type="date" not-null="true" />
+        <property column="fechaFin" name="fechaFin" type="date" not-null="true" />
+        <property column="supervisor" name="supervisor" type="string" length="45" not-null="true" />
+        <property column="horasMes" name="horasMes" type="integer" length="11" not-null="true" />
+        <property column="horasAnteriores" name="horasAnteriores" type="integer" length="11" not-null="false" />
+        <property column="horasAcumuladas" name="horasAcumuladas" type="integer" length="11" not-null="false" />
+        
+        <!-- relaciones -->
+        <many-to-one name="estado" column="estado" cascade="evict" class="com.sirass.model.EstadoReporte" />
+        <set name="horas" table="EControlHoras" cascade="all">
+            <key column="idControlHoras" />
+            <one-to-many class="com.sirass.model.RegistroHora" />
+        </set>
+        
+        <!-- del registro -->
+        <property column="creacion" name="creacion" not-null="true" type="java.util.Date"/>
+        <property column="ultimaModif" name="ultimaModif" not-null="true" type="java.util.Date"/>
+        <property column="modificadoPor" length="15" name="modificadoPor" not-null="true" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

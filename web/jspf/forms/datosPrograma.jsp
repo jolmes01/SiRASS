@@ -72,77 +72,25 @@
             <div class="control-group">
                 <label class="control-label" for="horaEntrada">Hora de entrada:</label>
                 <div class="controls">
-                    <select class="input-mini" name="horaEntrada">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
+                    <input type="text" name="horaEntrada" id="horaEntrada" class="input-small center" />
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="horaSalida">Hora de salida:</label>
                 <div class="controls">
-                    <select class="input-mini" name="horaSalida">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
+                    <input type="text" name="horaSalida" id="horaSalida" class="input-small center" />
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="fInicioDia">Fecha de inicio:</label>
                 <div class="controls">
-                    <select class="span1" name="fInicioDia" id="nDia">
-                        <option value="0">D&iacute;a</option>
-                        <% for (int i = 1; i <= 31; i++) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <select class="span1" name="fInicioMes" id="nMes">
-                        <option value="0">Mes</option>
-                        <% for (int i = 1; i <= 12; i++) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <select class="span1" name="fInicioAno" id="nAno">
-                        <option value="0">A&ntilde;o</option>
-                        <% for (int i = 2000; i >= 1960; i--) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <!-- input oculto fechaInicio -->
-                    <input type="hidden" name="fInicio" id="nacimiento" />
+                    <input type="text" name="fInicio" id="fInicio" class="input-small center" />
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="fTerminoDia">Fecha de t&eacute;rmino</label>
                 <div class="controls">
-                    <select class="span1" name="fTerminoDia" id="nDia">
-                        <option value="0">D&iacute;a</option>
-                        <% for (int i = 1; i <= 31; i++) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <select class="span1" name="fTerminoMes" id="nMes">
-                        <option value="0">Mes</option>
-                        <% for (int i = 1; i <= 12; i++) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <select class="span1" name="fTerminoAno" id="nAno">
-                        <option value="0">A&ntilde;o</option>
-                        <% for (int i = 2000; i >= 1960; i--) {
-                        %>
-                        <option><%= i%></option>
-                        <% }%>
-                    </select>
-                    <!-- input oculto fechaInicio -->
-                    <input type="hidden" name="fTermino" id="nacimiento" />
+                    <input type="text" name="fTermino" id="fTermino" class="input-small center" />
                 </div>
             </div>
         </fieldset> <!-- end datos del programa SS -->

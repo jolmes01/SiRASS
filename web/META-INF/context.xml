@@ -3,7 +3,7 @@
     <Realm  className="org.apache.catalina.realm.JDBCRealm"
             driverName="com.mysql.jdbc.Driver"
             connectionURL="jdbc:mysql://localhost:3306/SiRASS"
-            connectionName="root" connectionPassword="root"
+            connectionName="skyforge" connectionPassword="skyforge"
             userTable="MUsuario" userNameCol="usuario" userCredCol="password"
             userRoleTable="MRolUsuario" roleNameCol="rol" />
 </Context>

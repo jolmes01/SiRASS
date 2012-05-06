@@ -5,7 +5,7 @@
 <!-- Datos escolares
 ================================================== -->
 <div class="row form-horizontal">
-    <div class="span6 well">
+    <div class="span6">
         <fieldset>
             <legend>Datos escolares</legend>
             <!--            <div class="control-group">
@@ -27,7 +27,7 @@
                         <!-- Lista de instituciones -->
                         <% CInstitucionDAO dao = new CInstitucionDAO();
                             List<CInstitucion> lista = dao.getAll();
-                            if (lista.isEmpty()) {%>
+                            if (lista == null || lista.isEmpty()) {%>
                         <option value="0">-- Sin instituciones --</option>
                         <%  } else {%>
                         <option value="0">-- Elegir alguna existente --</option>
@@ -77,12 +77,18 @@
                 <div class="controls">
                     <select class="span1" id="semestre" name="semestre">
                         <!-- inserter del 1-10 -->
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
                     </select>
                 </div>
             </div>

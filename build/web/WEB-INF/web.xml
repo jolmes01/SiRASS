@@ -20,6 +20,10 @@
         <servlet-name>GetPlantelesAsJSON</servlet-name>
         <servlet-class>com.sirass.servlet.GetPlantelesAsJSON</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FormCatcher</servlet-name>
+        <servlet-class>com.sirass.servlet.FormCatcher</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>GetPlantelesAsJSON</servlet-name>
         <url-pattern>/GetPlantelesAsJSON</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FormCatcher</servlet-name>
+        <url-pattern>/FormCatcher</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -68,7 +76,7 @@
             <role-name>consulta</role-name>
         </auth-constraint>
     </security-constraint>
-    <security-constraint>
+    <!-- <security-constraint>
         <display-name>Prestadores</display-name>
         <web-resource-collection>
             <web-resource-name>Prestador</web-resource-name>
@@ -79,7 +87,7 @@
             <description/>
             <role-name>prestador</role-name>
         </auth-constraint>
-    </security-constraint>
+    </security-constraint> -->
     <security-constraint>
         <display-name>Instituciones</display-name>
         <web-resource-collection>

@@ -29,10 +29,16 @@
                 ================================================== -->
                 <div class="container bg span7">
                     <div id="contenido">
-                        <h1>Control de Horas</h1>
-                        <form action="../jspf/forms/dataForm.jsp" method="post">
+                        <h1>Inscripci&oacute;n a un programa de Servicio Social</h1>
+                        <p>Para inscribirte en un programa de Servicio Social llena los siguientes datos:</p>
+                        <form action="../jspf/forms/dataForm.jsp" method="get">
                             <div id="formulario">
-                                <%@include file="jspf/inscripcionForm.jsp" %>
+                                <div class="span4 offset2">
+                                    <div class="btn-group" data-toggle="buttons-radio">
+                                        <button type="button" name="ss" id="ss" class="btn btn-large btn-inverse active">Servicio Social</button>
+                                        <button type="button" name="pp" id="pp" class="btn btn-large btn-inverse">Pr&aacute;ctica Profesional</button>
+                                    </div>
+                                </div>
                                 <%@include file="/jspf/forms/datosEscolares.jsp" %>
                                 <%@include file="/jspf/forms/datosPrograma.jsp" %>
                                 <div class="form-actions">

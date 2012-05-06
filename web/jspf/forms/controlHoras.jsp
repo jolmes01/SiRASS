@@ -1,44 +1,8 @@
 <!-- Datos del alumno
 ================================================== -->
 <div class="row">
-    <!-- datos personales -->
-    <div class="span4">
-        <fieldset>
-            <legend>Datos del alumno</legend>
-            <div class="control-group">
-                <label class="control-label" for="nombre">Nombre(s):</label>
-                <div class="controls">
-                    <input type="text" id="nombre" name="nombre" maxlength="25" />
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="aPaterno">Apellido paterno:</label>
-                <div class="controls">
-                    <input type="text" id="aPaterno" name="aPaterno" maxlength="15" />
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="aMaterno">Apellido materno:</label>
-                <div class="controls">
-                    <input type="text" id="aMaterno" name="aMaterno" maxlength="15" />
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="nControl">N&deg; Control</label>
-                <div class="controls">
-                    <input class="input-large" type="text" id="nControl" name="nControl" maxlength="20" />
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="colegio">Colegio o facultad:</label>
-                <div class="controls">
-                    <input class="input-xlarge" type="text" id="colegio" name="colegio" maxlength="30" />
-                </div>
-            </div>
-        </fieldset>
-    </div> <!-- end datos personales -->
     <!-- datos del reporte -->
-    <div class="span3">
+    <div class="span6 form-horizontal">
         <fieldset>
             <legend>Datos del reporte</legend>
             <div class="control-group">
@@ -61,7 +25,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label for="supervisor">Supervisor o jefe inmediato:</label>
+                <label class="control-label" for="supervisor">Jefe inmediato:</label>
                 <div class="controls">
                     <input type="text" name="supervisor" id="supervisor" />
                 </div>
@@ -69,7 +33,7 @@
         </fieldset>
     </div> <!-- end datos reporte -->
 </div> <!-- row end -->
-<!-- Tabla de registro de hroas
+<!-- Tabla de registro de horas
 ================================================== -->
 <div class="row">
     <!-- datos del reporte -->
