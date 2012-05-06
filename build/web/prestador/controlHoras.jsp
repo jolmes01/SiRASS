@@ -7,19 +7,6 @@
         </jsp:include>
         <link href="../css/reg.css" rel="stylesheet" />
         <link href="../css/ui-lightness/jquery-ui-1.8.19.custom.css" rel="stylesheet" />
-        <style type="text/css">
-            table tbody tr td {
-                text-align: center !important;
-            }
-            table th {
-                text-align: center !important;
-            }
-            table tbody tr td input[readonly="readonly"] {
-                background-color: #fff;
-                cursor: pointer;
-                text-align: center;
-            }
-        </style>
     </head>
     <body>
         <!-- Header

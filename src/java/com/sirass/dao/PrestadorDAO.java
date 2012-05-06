@@ -1,6 +1,11 @@
 package com.sirass.dao;
 
+import com.sirass.HibernateUtil;
 import com.sirass.model.Prestador;
+import com.sirass.model.Usuario;
+import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -18,5 +23,39 @@ public class PrestadorDAO extends DAO {
      */
     public int insert(Prestador prestador) {
         return super.insert(prestador);
+    }
+    
+    /**
+     * Devuelve el ID de la inscripción actual del prestador
+     * 
+     * @param username - El nombre de usuario del prestador
+     * @return - ID de la inscripción
+     */
+    public int getCurrentInscripcion(String username) {
+        return this.getCurrentInscripcion(
+                Restrictions.eq("usuario", username)
+                );
+    }
+    
+    /**
+     * Devuelve el ID de la inscripción actual del prestador
+     * 
+     * @param idPrestador - El id del prestador
+     * @return - ID de la inscripción
+     */
+    public int getCurrentInscripcion(int idPrestador) {
+        return this.getCurrentInscripcion(
+                Restrictions.eq("idPrestador", idPrestador)
+                );
+    }
+    
+    private int getCurrentInscripcion(Criterion crit) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Usuario p = (Usuario) session.createCriteria(Usuario.class)
+                .add(crit)
+                .uniqueResult();
+        int idInscripcion = p.getPrestador().getInscripcion();        
+        session.close();
+        return idInscripcion;
     }
 }

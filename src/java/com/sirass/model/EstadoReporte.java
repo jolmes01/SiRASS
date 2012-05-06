@@ -31,4 +31,8 @@ public class EstadoReporte {
     public void setIdEstado(short idEstado) {
         this.idEstado = idEstado;
     }
+
+    public void printInfo() {
+        System.out.println("idEstado: " + this.idEstado + " ( " + descripcion + " )");
+    }
 }

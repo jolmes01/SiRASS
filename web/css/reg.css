@@ -1,4 +1,25 @@
 /* Reducir padding derecho del sidebar */
 .sidebar-nav {
-	padding-right: 10px;
+    padding-right: 10px;
+}
+
+
+table tbody tr td {
+    text-align: center !important;
+    padding-top: 1em !important;
+}
+table th {
+    text-align: center !important;
+}
+table tbody tr td input[readonly="readonly"] {
+    background-color: #fff;
+    cursor: pointer;
+    text-align: center;
+}
+#contenido h1 {
+    margin-bottom: 1em;
+}
+
+#contenido h2 {
+    margin-bottom: 0.25em;
 }

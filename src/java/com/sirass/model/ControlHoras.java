@@ -1,8 +1,13 @@
 package com.sirass.model;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -139,5 +144,33 @@ public class ControlHoras {
 
     public void setUltimaModif(Date ultimaModif) {
         this.ultimaModif = ultimaModif;
+    }
+
+    public void printInfo() {
+        System.out.println("idControlHoras: " + idControlHoras);
+        System.out.println("idInscripcion: " + idInscripcion);
+        System.out.println("nReporte: " + nReporte);
+        System.out.println("fechaInicio: " + this.fechaInicio.toString());
+        System.out.println("fechaFin" + this.fechaFin.toString());
+        System.out.println("supervisor: " + supervisor);
+        System.out.println("horasMes: " + horasMes);
+        System.out.println("horasAnteriores: " + horasAnteriores);
+        System.out.println("horasAcumuladas: " + horasAcumuladas);
+        this.estado.printInfo();
+        printDatosRegistro();
+    }
+
+    public void printHoras() {
+        Iterator<RegistroHora> it = this.horas.iterator();
+        while (it.hasNext()) {
+            RegistroHora r = it.next();
+            r.printInfo();
+        }
+    }
+
+    private void printDatosRegistro() {
+        System.out.println("creacion: " + creacion.toString());
+        System.out.println("modificadoPor: " + modificadoPor);
+        System.out.println("ultimaModif: " + ultimaModif.toString());
     }
 }

@@ -5,7 +5,7 @@
       <id column="idDControlHoras" name="idRegistroHora" type="integer" length="11">
           <generator class="native" />
       </id>
-      <many-to-one name="controlHoras" class="com.sirass.model.ControlHoras" column="idControlHoras"/>
+<!--      <many-to-one name="controlHoras" class="com.sirass.model.ControlHoras" column="idControlHoras" />-->
       <property name="fecha" column="fecha" type="date" not-null="true" />
       <property name="horaEntrada" column="horaEntrada" type="time" not-null="true" />
       <property name="horaSalida" column="horaSalida" type="time" not-null="true" />

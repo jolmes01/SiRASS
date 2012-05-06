@@ -10,6 +10,7 @@ import java.util.Date;
  */
 public class Prestador {
 
+    private int inscripcion;
     private int idPrestador;
     private String nControl;
     private String nombre;
@@ -34,7 +35,15 @@ public class Prestador {
 
     public Prestador() {
     }
-    
+
+    public int getInscripcion() {
+        return inscripcion;
+    }
+
+    public void setInscripcion(int inscripcion) {
+        this.inscripcion = inscripcion;
+    }
+
     public void getInfo() {
         System.out.println("## Información de clase: " + this.getClass().getSimpleName());
         System.out.println("idPrestador: " + this.idPrestador);
@@ -107,7 +116,7 @@ public class Prestador {
     public Date getNacimiento() {
         return nacimiento;
     }
-    
+
     public String getNacimientoStr() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("DD-MM-yyyy");
         return dateFormat.format(this.getNacimiento());

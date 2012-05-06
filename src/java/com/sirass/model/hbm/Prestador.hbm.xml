@@ -7,6 +7,7 @@
         <id column="idPrestador" name="idPrestador" type="integer">
             <generator class="increment" />
         </id>
+        <property column="inscripcion" length="11" name="inscripcion" not-null="false" type="integer" />
         <property column="nControl" length="16" name="nControl" not-null="false" type="java.lang.String" />
         <property column="nombre" length="25" name="nombre" not-null="true" type="java.lang.String" />
         <property column="aPaterno" length="15" name="aPaterno" not-null="true" type="java.lang.String" />

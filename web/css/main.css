@@ -54,6 +54,10 @@ a.brand, span.navbar-text a {
 /* @end */
 
 /* @group alineación de texto */
+/* izquierda */
+.left {
+    text-align: left !important;
+}
 /* derecha */
 .right {
 	text-align: right;

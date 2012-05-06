@@ -66,4 +66,12 @@ public class RegistroHora {
     public void setHorasDia(int horasDia) {
         this.horasDia = horasDia;
     }
+
+    void printInfo() {
+        System.out.println("idRegistroHora: " + idRegistroHora);
+        System.out.println("fecha: " + fecha.toString());
+        System.out.println("horaEntrada: " + horaEntrada.toString());
+        System.out.println("horaSalida: " + horaSalida.toString());
+        System.out.println("horasDia: " + horasDia);
+    }
 }

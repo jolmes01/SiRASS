@@ -17,9 +17,9 @@
         
         <!-- relaciones -->
         <many-to-one name="estado" column="estado" cascade="evict" class="com.sirass.model.EstadoReporte" />
-        <set name="horas" table="EControlHoras" cascade="all">
+        <set name="horas" table="RegistrosControlHoras" lazy="true">
             <key column="idControlHoras" />
-            <one-to-many class="com.sirass.model.RegistroHora" />
+            <many-to-many class="com.sirass.model.RegistroHora" column="idDControlHoras" order-by="fecha" />
         </set>
         
         <!-- del registro -->
