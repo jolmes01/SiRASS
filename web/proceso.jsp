@@ -75,6 +75,6 @@
                 <a class="carousel-control right" href="#myCarousel" data-slide="next">&gt;</a>
             </div>
         </div>
-        <%@include file="/jspf/footer.jsp" %>
+            <jsp:include page="/jspf/footer.jsp" />
     </body>
 </html>

@@ -1,7 +1,12 @@
-<%
-    String path = "";
-    path = application.getContextPath();
+<%  
+    String dpickerParam = request.getParameter("datepicker");
+    String tpickerParam = request.getParameter("timepicker");
+    String navParam = request.getParameter("nav");
+    boolean datepicker = (dpickerParam != null && dpickerParam.equals("true")) ? true : false;
+    boolean timepicker = (tpickerParam != null && tpickerParam.equals("true")) ? true : false;
+    boolean nav = (navParam != null && navParam.equals("true")) ? true : false;
 %>
+
         <footer>
 		<div class="container">
 	  		<hr />
@@ -19,5 +24,14 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
-    <script src="<%= path %>/js/jquery-1.7.1.min.js" type="text/javascript"></script>
-    <script src="<%= path %>/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/SiRASS/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="/SiRASS/bootstrap/js/bootstrap.min.js"></script>
+    <% if (datepicker) { %>
+    <script src="/SiRASS/js/jquery-ui-1.8.19.custom.min.js" type="text/javascript"></script>
+    <% } %>
+    <% if (timepicker) { %>
+    <script src="/SiRASS/js/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+    <% } %>
+    <% if (nav) { %>
+    <script src="/SiRASS/js/navigate.js" type="text/javascript"></script>
+    <% } %>

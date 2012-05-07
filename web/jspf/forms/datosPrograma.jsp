@@ -1,13 +1,13 @@
 <!-- Datos del programa de SS
 ================================================== -->
-<div class="row form-horizontal">
-    <div class="span8">
+<div class="form-horizontal">
+    <div class="span9">
         <fieldset>
             <legend>Datos del Programa de Servicio Social</legend>
             <div class="control-group">
                 <label class="control-label" for="idPrograma">Programa:</label>
                 <div class="controls">
-                    <select class="span4" name="idPrograma">
+                    <select class="input-xlarge" name="idPrograma" size="10">
                         <option value="0">-- Seleccionar programa --</option>
                         <option value="1">Programa 1</option>
                         <option value="2">Programa 2</option>

@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.datepicker.setDefaults({
-        dateFormat: "dd/mm/yy"
+        dateFormat: "dd-mm-yy"
     });
     $('#fInicio, #fTermino').datepicker();
     $('#horaEntrada, #horaSalida').timepicker({});

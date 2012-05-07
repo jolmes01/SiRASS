@@ -1,9 +1,3 @@
-/* Reducir padding derecho del sidebar */
-.sidebar-nav {
-    padding-right: 10px;
-}
-
-
 table tbody tr td {
     text-align: center !important;
     padding-top: 1em !important;
@@ -17,9 +11,17 @@ table tbody tr td input[readonly="readonly"] {
     text-align: center;
 }
 #contenido h1 {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 }
 
 #contenido h2 {
     margin-bottom: 0.25em;
+}
+
+p.actividades {
+    text-align: justify;
+}
+
+.tipoServicio {
+    margin-bottom: 1em;
 }

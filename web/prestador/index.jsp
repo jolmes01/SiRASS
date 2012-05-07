@@ -4,8 +4,8 @@
 <head>
     <jsp:include page="/jspf/head.jsp">
         <jsp:param name="title" value="Bienvenido"/>
+        <jsp:param name="reg" value="true"/>
     </jsp:include>
-	<link href="../css/reg.css" rel="stylesheet" />
 </head>
 <body>
 	<!-- Header
@@ -17,7 +17,7 @@
 	</header>
 	<!-- Container
     ================================================== -->
-    <div class="container-fluid">
+    <div class="container">
     	<div class="row-fluid">
     		<!-- Sidebar
     		================================================== -->
@@ -26,7 +26,7 @@
                 </jsp:include>
     		<!-- Contenido
     		================================================== -->
-                <div class="container bg span7">
+                <div class="container bg span9">
                     <div id="contenido">
                     <h1>Bienvenido, <%= (String) session.getAttribute("username") %></h1>
     			<p>Actualmente no est&aacute;s inscrito a ning&uacute;n programa de Servicio Social.</p>
@@ -42,7 +42,10 @@
     </div>
 	<!-- Footer
     ================================================== -->
-        <%@include file="/jspf/footer.jsp" %>
-        <script type="text/javascript" src="../js/navigate.js"></script>
+        <jsp:include page="/jspf/footer.jsp">
+            <jsp:param name="datepicker" value="true" />
+            <jsp:param name="timepicker" value="true" />
+            <jsp:param name="nav" value="true" />
+        </jsp:include>
 </body>
 </html>

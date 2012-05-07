@@ -1,5 +1,5 @@
                 <div class="span3" id="sidebar">
-    			<nav class="well">
+    			<nav class="well well-small">
     				<ul class="nav nav-list">
     					<li>
     						<a href="./">

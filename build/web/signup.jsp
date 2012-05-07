@@ -102,7 +102,7 @@
     </div>
 	<!-- Footer
     ================================================== -->
-        <%@include file="/jspf/footer.jsp" %>
+        <jsp:include page="/jspf/footer.jsp" />
         <script src="./js/signup.js"></script>
         <script src="./js/validaciones.js"></script>
 </body>

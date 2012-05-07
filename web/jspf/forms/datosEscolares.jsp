@@ -4,7 +4,7 @@
 <%@page import="com.sirass.dao.CInstitucionDAO"%>
 <!-- Datos escolares
 ================================================== -->
-<div class="row form-horizontal">
+<div class="form-horizontal">
     <div class="span6">
         <fieldset>
             <legend>Datos escolares</legend>
@@ -23,7 +23,7 @@
             <div class="control-group">
                 <label class="control-label" for="institucionList">Instituci&oacute;n o dependencia:</label>
                 <div class="controls">
-                    <select class="span4" id="institucionList" name="institucionList" onchange="obtenerPlanteles(this)">
+                    <select id="institucionList" name="institucionList" onchange="obtenerPlanteles(this)">
                         <!-- Lista de instituciones -->
                         <% CInstitucionDAO dao = new CInstitucionDAO();
                             List<CInstitucion> lista = dao.getAll();
@@ -47,7 +47,7 @@
                         <input type="radio" name="institucionOpc" id="institucionRadioOtra" 
                                onclick="switchRadio(this)" value="1" /> Otra
                     </label>
-                    <input class="span4" type="text" id="nombreInstitucion" name="nombreInstitucion" maxlength="100"
+                    <input class="input-xlarge" type="text" id="nombreInstitucion" name="nombreInstitucion" maxlength="100"
                            placeholder="Nombre de instituci&oacute;n o depedencia" style="margin-top: 6px" disabled="disabled"/>
                     <p class="help-block"><em>Marcar <em>otra</em> si tu instituci&oacute;n <strong>no se encuentra</strong></em></p>
                 </div>
@@ -55,7 +55,7 @@
             <div class="control-group">
                 <label class="control-label" for="plantelesList">Plantel:</label>
                 <div class="controls">
-                    <select class="span4" id="plantelesList" name="plantelesList">
+                    <select id="plantelesList" name="plantelesList">
                         <option value="0">-- Elegir alguno existente --</option>
                         <option value="0">Ninguno</option>
                     </select>
@@ -67,7 +67,7 @@
                         <input type="radio" name="plantelOpc" id="plantelRadioOtro"
                                onclick="switchRadio(this)" value="1" /> Otro
                     </label>
-                    <input class="span4" type="text" id="nombrePlantel" name="nombrePlantel" maxlength="50"
+                    <input class="input-xlarge" type="text" id="nombrePlantel" name="nombrePlantel" maxlength="50"
                            placeholder="Nombre del plantel" style="margin-top: 6px" disabled="disabled"/>
                     <p class="help-block"><em>Marcar <em>otro</em> si el plantel <strong>no se encuentra</strong></em></p>
                 </div>
@@ -75,7 +75,7 @@
             <div class="control-group">
                 <label class="control-label" for="semestre">Semestre:</label>
                 <div class="controls">
-                    <select class="span1" id="semestre" name="semestre">
+                    <select id="semestre" name="semestre" class="input-mini">
                         <!-- inserter del 1-10 -->
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -108,7 +108,7 @@
                 <label class="control-label" for="promedio">Promedio:</label>
                 <div class="controls">
                     <div class="input-append">
-                        <input class="span1 right" type="text" id="promedio" name="promedio" maxlength="4" /><span class="add-on">#.#</span>
+                        <input class="input-mini right" type="text" id="promedio" name="promedio" maxlength="4" /><span class="add-on">#.#</span>
                     </div>
                 </div>
             </div>
@@ -116,15 +116,18 @@
                 <label class="control-label" for="avanceCurso">Avance de cursos:</label>
                 <div class="controls">
                     <div class="input-append">
-                        <input class="span1 right" type="text" id="avanceCurso" name="avanceCurso" maxlength="3" /><span class="add-on">%</span>
+                        <input class="input-mini right" type="text" id="avanceCurso" name="avanceCurso" maxlength="3" /><span class="add-on">%</span>
                     </div>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="fechaIngreso">Fecha de ingreso:</label>
                 <div class="controls">
-                    <select class="span1" id="fechaIngreso" name="fechaIngreso">
-                        <option>A&ntilde;o</option>
+                    <select class="input-small" id="fechaIngreso" name="fechaIngreso">
+                        <option value="0"> -- A&ntilde;o -- </option>
+                        <% for(int i = 2012; i > 1980; i--) { %>
+                        <option value="<%= i %>"><%= i %></option>
+                        <% } %>
                     </select>
                 </div>
             </div>
@@ -133,16 +136,16 @@
                 <div class="control-group">
                     <label class="control-label" for="creditos">Total de cr&eacute;ditos:</label>
                     <div class="controls">
-                        <input class="span1" type="text" id="creditos" name="creditos" maxlength="4" />
+                        <input class="input-mini" type="text" id="creditos" name="creditos" maxlength="4" />
                     </div>
                 </div>
                 <p><strong>Total de cursos</strong></p>
                 <div class="control-group">
                     <label class="control-label" for="cursosBasico">Ciclo b&aacute;sico:</label>
                     <div class="controls">
-                        <input class="span1" type="text" id="cursosBasico" name="cursosBasico" maxlength="3" />
+                        <input class="input-mini" type="text" id="cursosBasico" name="cursosBasico" maxlength="3" />
                         <span class="input-inline">Ciclo superior</span>
-                        <input class="span1" type="text" id="cursosSuperior" name="cursosSuperior" maxlength="3" />
+                        <input class="input-mini" type="text" id="cursosSuperior" name="cursosSuperior" maxlength="3" />
                     </div>
                 </div> <!-- end prácticas profesionales -->
             </div>

@@ -37,7 +37,7 @@
 ================================================== -->
 <div class="row">
     <!-- datos del reporte -->
-    <div class="span8">
+    <div class="span12">
         <fieldset>
             <legend>Registra tus horas</legend>
             <div class="form-actions">

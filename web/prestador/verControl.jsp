@@ -9,9 +9,9 @@
 <html lang="es">
     <head>
         <jsp:include page="/jspf/head.jsp">
-            <jsp:param name="title" value="Tus Controles de Horas"/>
+            <jsp:param name="title" value="ControlHoras"/>
+            <jsp:param name="reg" value="true" />
         </jsp:include>
-        <link href="../css/reg.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Header
@@ -23,7 +23,7 @@
         </header>
         <!-- Container
     ================================================== -->
-        <div class="container-fluid">
+        <div class="container">
             <div class="row-fluid">
                 <!-- Sidebar
                 ================================================== -->
@@ -32,7 +32,7 @@
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
-                <div class="container bg span7">
+                <div class="container bg span9">
                     <div id="contenido">
                         <%
                             if (request.getParameter("idControl") != null) {
@@ -45,7 +45,7 @@
                                     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                         %>
                         <div class="row">
-                            <div class="span6">
+                            <div class="span7">
                                 <%
                                     String label = "label-";
                                     int idEstado = controlHoras.getEstado().getIdEstado();
@@ -66,7 +66,7 @@
                                 <h3>Supervisor: <%= controlHoras.getSupervisor()%></h3>
                                 <h3>Revisor: <%= controlHoras.getModificadoPor()%></h3>
                             </div>
-                            <div class="span2 right">
+                            <div class="span5 right">
                                 <h4>N&deg; reporte: <%= controlHoras.getnReporte()%></h4>
                                 <h4>Del: <%= dateFormat.format(controlHoras.getFechaInicio())%></h4>
                                 <h4>Al: <%= dateFormat.format(controlHoras.getFechaFin())%></h4>
@@ -75,19 +75,19 @@
                         </div>
                         <br />
                         <div class="row">
-                            <div class="span2">
+                            <div class="span4">
                                 <h4>Mes: <%= controlHoras.getHorasMes()%></h4>
                             </div>
-                            <div class="span2 offset1">
+                            <div class="span4 offset2">
                                 <h4>Anteriores: <%= controlHoras.getHorasAnteriores()%></h4>
                             </div>
-                            <div class="span2 offset1">
+                            <div class="span4 offset2">
                                 <h4>Acumuladas: <%= controlHoras.getHorasAcumuladas()%></h4>
                             </div>
                         </div>
                         <br />
                         <div class="row">
-                            <div class="span9">
+                            <div class="span12">
                                 <h2>Registro de horas</h2>
                                 <table class="table table-bordered table-striped">
                                     <thead>
@@ -133,7 +133,8 @@
         </div>
         <!-- Footer
     ================================================== -->
-        <%@include file="/jspf/footer.jsp" %>
-        <script type="text/javascript" src="../js/navigate.js"></script>
+        <jsp:include page="/jspf/footer.jsp">
+            <jsp:param name="mav" value="true" />
+        </jsp:include>
     </body>
 </html>

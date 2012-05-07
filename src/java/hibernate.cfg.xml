@@ -20,5 +20,6 @@
     <mapping class="com.sirass.model.ControlHoras" resource="com/sirass/model/hbm/ControlHoras.hbm.xml"/>
     <mapping class="com.sirass.model.EstadoReporte" resource="com/sirass/model/hbm/EstadoReporte.hbm.xml"/>
     <mapping class="com.sirass.model.RegistroHora" resource="com/sirass/model/hbm/RegistroHora.hbm.xml"/>
+    <mapping resource="com/sirass/model/hbm/InformeBimensual.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

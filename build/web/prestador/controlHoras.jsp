@@ -4,9 +4,10 @@
     <head>
         <jsp:include page="/jspf/head.jsp">
             <jsp:param name="title" value="ControlHoras"/>
+            <jsp:param name="datepicker" value="true" />
+            <jsp:param name="timepicker" value="true" />
+            <jsp:param name="reg" value="true" />
         </jsp:include>
-        <link href="../css/reg.css" rel="stylesheet" />
-        <link href="../css/ui-lightness/jquery-ui-1.8.19.custom.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Header
@@ -14,11 +15,13 @@
         <header>
             <jsp:include page="jspf/header.jsp">
                 <jsp:param name="active" value="inicio"/>
+                <jsp:param name="datepicker" value="true" />
+                <jsp:param name="timepicker" value="true" />
             </jsp:include>
         </header>
         <!-- Container
     ================================================== -->
-        <div class="container-fluid">
+        <div class="container">
             <div class="row-fluid">
                 <!-- Sidebar
                 ================================================== -->
@@ -27,15 +30,17 @@
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
-                <div class="container bg span7">
+                <div class="container bg span9">
                     <div id="contenido">
                         <h1>Control de Horas</h1>
                         <form action="../jspf/forms/dataForm.jsp" method="post">
                             <div id="formulario">
                                 <%@include file="/jspf/forms/controlHoras.jsp" %>
-                                <div class="form-actions">
-                                    <button type="submit" class="btn btn-primary btn-large">Enviar</button>
-                                    <button type="reset" id="reset" class="btn btn-primary btn-large">Limpiar campos</button>
+                                <div class="row">
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary btn-large">Enviar</button>
+                                        <button type="reset" id="reset" class="btn btn-primary btn-large">Limpiar campos</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -45,10 +50,11 @@
         </div>
         <!-- Footer
     ================================================== -->
-        <%@include file="/jspf/footer.jsp" %>
-        <script type="text/javascript" src="../js/jquery-ui-1.8.19.custom.min.js"></script>
-        <script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
-        <script type="text/javascript" src="../js/navigate.js"></script>
+        <jsp:include page="/jspf/footer.jsp">
+            <jsp:param name="datepicker" value="true" />
+            <jsp:param name="timepicker" value="true" />
+            <jsp:param name="nav" value="true" />
+        </jsp:include>
         <script type="text/javascript" src="../js/controlHoras.js"></script>
     </body>
 </html>

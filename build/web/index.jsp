@@ -98,6 +98,6 @@
 	</div>
 	<!-- Footer
     ================================================== -->
-        <%@include file="jspf/footer.jsp" %>
+        <jsp:include page="/jspf/footer.jsp" />
 </body>
 </html>

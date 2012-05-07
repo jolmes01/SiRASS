@@ -9,6 +9,9 @@
     <head>
         <jsp:include page="/jspf/head.jsp">
             <jsp:param name="title" value="Tus Controles de Horas"/>
+            <jsp:param name="datepicker" value="true" />
+            <jsp:param name="timepicker" value="true" />
+            <jsp:param name="reg" value="true" />
         </jsp:include>
         <link href="../css/reg.css" rel="stylesheet" />
     </head>
@@ -22,7 +25,7 @@
         </header>
         <!-- Container
     ================================================== -->
-        <div class="container-fluid">
+        <div class="container">
             <div class="row-fluid">
                 <!-- Sidebar
                 ================================================== -->
@@ -31,13 +34,15 @@
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
-                <div class="container bg span7">
+                <div class="container bg span9">
                     <div id="contenido">
                         <h1>Historial de Control de Horas</h1>
                         <%
+                            String username = (String) session.getAttribute("username");
+                            if (username != null) {
                             ControlHorasDAO dao = new ControlHorasDAO();
                             //dao.getListByUsername(session.getAttribute("username"))
-                            List<ControlHoras> lista = dao.getListByUsername("prestador1");
+                            List<ControlHoras> lista = dao.getListByUsername(username);
                             if (!lista.isEmpty() || lista != null) {
                                 Iterator<ControlHoras> it = lista.iterator();
                         %>
@@ -62,7 +67,7 @@
                                                 ControlHoras c = it.next();
                                         %>
                                         <tr>
-                                            <td class="span1"><%= c.getnReporte()%></td>
+                                            <td><%= c.getnReporte()%></td>
                                             <td><%= dateFormat.format(c.getFechaInicio())%></td>
                                             <td><%= dateFormat.format(c.getFechaFin())%></td>
                                             <td><%= c.getHorasMes()%></td>
@@ -88,6 +93,7 @@
                                                     <button name="idControl" class="btn btn-small btn-warning"
                                                             value="<%= id%>" type="submit">
                                                         <i class="icon-info-sign icon-white"></i>
+                                                        Ver
                                                     </button>
                                                     <button class="btn dropdown-toggle btn-small btn-warning" data-toggle="dropdown">
                                                         <span class="caret"></span>
@@ -97,6 +103,12 @@
                                                             <a href="#download" id="descargar">
                                                                 <i class="icon-download-alt"></i>
                                                                 Descargar
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#editar" id="editar">
+                                                                <i class="icon-edit"></i>
+                                                                Editar
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -109,7 +121,7 @@
                             </div>
                         </form>
                         <%
-                            }
+                            } }
                         %>
                     </div>
                 </div>
@@ -117,7 +129,8 @@
         </div>
         <!-- Footer
     ================================================== -->
-        <%@include file="/jspf/footer.jsp" %>
-        <script type="text/javascript" src="../js/navigate.js"></script>
+        <jsp:include page="/jspf/footer.jsp">
+            <jsp:param name="mav" value="true" />
+        </jsp:include>
     </body>
 </html>
