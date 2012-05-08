@@ -22,7 +22,7 @@
     					</li>
     					<li class="nav-header">Gestionar perfil</li>
     					<li<%=liActives[1]%>>
-    						<a href="#perfil">
+    						<a href="#perfilAdmin">
     							<i class="icon-pencil<%=iconActive[1]%>"></i>
     							Editar datos
     						</a>

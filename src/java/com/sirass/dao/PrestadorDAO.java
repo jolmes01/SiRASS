@@ -3,6 +3,7 @@ package com.sirass.dao;
 import com.sirass.HibernateUtil;
 import com.sirass.model.Prestador;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -61,5 +62,28 @@ public class PrestadorDAO extends DAO {
                 .uniqueResult();
         session.close();
         return inscripcion;
+    }
+
+    public int upPrestador(Prestador prestador, String comand) {
+         Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        transaction.begin();
+        int updateDates = session.createQuery(comand)
+                .setString("mail", prestador.getEmail())
+                .setString("calle", prestador.getdCalle())
+                .setString("numInt", prestador.getdNumInt())
+                .setString("numExt", prestador.getdNumExt())
+                .setString("cp", prestador.getdCP())
+                .setString("del", prestador.getdDelegacion())
+                .setString("col", prestador.getdColonia())
+                .setString("telcas", prestador.getTelCasa())
+                .setString("tecel", prestador.getTelCel())
+                .setString("modifBy", prestador.getModificadoPor())
+                .setString("ultimod", String.valueOf(prestador.getUltimaModif()))
+                .setString("idPresta", String.valueOf(prestador.getIdPrestador()))
+                .executeUpdate();
+        transaction.commit();
+        session.close();
+        return updateDates;
     }
 }

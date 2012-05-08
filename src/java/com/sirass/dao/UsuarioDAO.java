@@ -70,7 +70,7 @@ public class UsuarioDAO extends DAO {
                 .add(Restrictions.eq("usuario", username))
                 .setFetchMode("prestador", FetchMode.JOIN)
                 .setFetchMode("institucion", FetchMode.JOIN)
-                .setFetchMode("administrador", FetchMode.SELECT)
+                .setFetchMode("administrador", FetchMode.JOIN)
                 .setFetchMode("roles", FetchMode.JOIN)
                 .uniqueResult();
         transaction.commit();
@@ -100,5 +100,19 @@ public class UsuarioDAO extends DAO {
         session.close();
         if (p != null) return p.getIdPrestador();
         else return 0;
+    }
+
+    public int upPass(Usuario user, String command) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        int updateDates = session.createQuery(command)
+                .setString("npass", user.getPassword())
+                .setString("modifyBy", user.getModificadoPor())
+                .setString("ultimod", String.valueOf(user.getUltimaModif()))
+                .setString("usuario", user.getUsuario())
+                .executeUpdate();
+        transaction.commit();
+        session.close();
+        return updateDates;
     }
 }

@@ -11,6 +11,7 @@
     <!-- Relaciones -->
         <many-to-one cascade="all" class="com.sirass.model.Prestador" column="idPrestador" name="prestador" not-null="false" unique="true" />
         <many-to-one cascade="all" class="com.sirass.model.Institucion" column="idInstitucion" name="institucion" not-null="false" unique="true" />
+        <many-to-one cascade="all" class="com.sirass.model.Administrador" column="idAdministrador" name="administrador" not-null="false" unique="true" />
         <set name="roles" table="MRolUsuario" cascade="all">
             <key column="usuario" />
             <many-to-many column="rol" unique="true" class="com.sirass.model.Rol" />

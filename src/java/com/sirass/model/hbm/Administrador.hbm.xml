@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.sirass.model.Usuario" table="MUsuario">
-        <id column="usuario" name="usuario" type="string"/>
-        <property column="password" length="15" name="password" not-null="true" type="java.lang.String"/>
-    <!-- del registro -->
-        <property column="creacion" name="creacion" not-null="true" type="java.util.Date"/>
-        <property column="ultimaModif" name="ultimaModif" not-null="true" type="java.util.Date"/>
-        <property column="modificadoPor" length="15" name="modificadoPor" not-null="true" type="java.lang.String"/>
-    <!-- Relaciones -->
-        <many-to-one cascade="all" class="com.sirass.model.Prestador" column="idPrestador" name="prestador" not-null="false" unique="true" />
-        <set name="roles" table="MRolUsuario" cascade="all">
-            <key column="usuario" />
-            <many-to-many column="rol" unique="true" class="com.sirass.model.Rol" />
-        </set>
-    </class>
+    <class name="com.sirass.model.Administrador" table="madministrador">
+    <id column="idAdmin" name="idAdmin" type="integer"/>
+    <!-- Datos del administrador -->
+    <property column="nombre" name="nombre" length="25" not-null="true" type="java.lang.String" />
+    <property column="aPaterno" name="aPaterno" length="15" not-null="true" type="java.lang.String" />
+    <property column="aMaterno" name="aMaterno" length="15" not-null="true" type="java.lang.String" />
+    <property column="email" name="email" length="30" not-null="true" type="java.lang.String" />
+    <property column="nacimiento" name="nacimiento" not-null="true" type="java.util.Date" />
+    <property column="sexo" name="sexo" length="1" not-null="true" type="char" />
+    <!-- De area de trabajo -->
+    <property column="cargo" name="cargo" length="45" not-null="false" type="java.lang.String" />
+    <!-- Del registro y modificaciones -->
+    <property column="modificadoPor" name="modificadoPor" length="25" not-null="true" type="java.lang.String" />
+    <property column="ultimaModif" name="ultimaModif" not-null="true" type="java.util.Date" />
+    <property column="creacion" name="creacion" not-null="true" type="java.util.Date" />
+  </class>
 </hibernate-mapping>
