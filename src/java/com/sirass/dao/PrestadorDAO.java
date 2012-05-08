@@ -2,9 +2,9 @@ package com.sirass.dao;
 
 import com.sirass.HibernateUtil;
 import com.sirass.model.Prestador;
-import com.sirass.model.Usuario;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -32,9 +32,13 @@ public class PrestadorDAO extends DAO {
      * @return - ID de la inscripción
      */
     public int getCurrentInscripcion(String username) {
-        return this.getCurrentInscripcion(
-                Restrictions.eq("usuario", username)
-                );
+        UsuarioDAO dao = new UsuarioDAO();
+        int idPrestador = dao.getIdPrestador(username);
+        if (idPrestador != 0) {
+            return this.getCurrentInscripcion(idPrestador);
+        } else {
+            return 0;
+        }
     }
     
     /**
@@ -51,11 +55,11 @@ public class PrestadorDAO extends DAO {
     
     private int getCurrentInscripcion(Criterion crit) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Usuario p = (Usuario) session.createCriteria(Usuario.class)
+        Integer inscripcion = (Integer) session.createCriteria(Prestador.class)
                 .add(crit)
+                .setProjection(Projections.property("inscripcion"))
                 .uniqueResult();
-        int idInscripcion = p.getPrestador().getInscripcion();        
         session.close();
-        return idInscripcion;
+        return inscripcion;
     }
 }

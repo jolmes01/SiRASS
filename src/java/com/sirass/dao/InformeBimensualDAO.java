@@ -2,6 +2,7 @@ package com.sirass.dao;
 
 import com.sirass.HibernateUtil;
 import com.sirass.model.InformeBimensual;
+import java.util.Collections;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
@@ -60,7 +61,7 @@ public class InformeBimensualDAO extends DAO {
         for (Criterion crit : res) {
             criteria.add(crit);
         }
-        lista = criteria.list();
+        lista = Collections.checkedList(criteria.list(), InformeBimensual.class);
         session.close();
         return lista;
     }

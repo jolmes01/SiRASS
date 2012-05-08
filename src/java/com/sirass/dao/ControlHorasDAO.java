@@ -3,15 +3,12 @@ package com.sirass.dao;
 import com.sirass.HibernateUtil;
 import com.sirass.model.ControlHoras;
 import com.sirass.model.EstadoReporte;
-import com.sirass.model.Prestador;
-import com.sirass.model.Usuario;
+import java.util.Collections;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -117,7 +114,7 @@ public class ControlHorasDAO extends DAO {
         for (Criterion crit : res) {
             criteria.add(crit);
         }
-        lista = criteria.list();
+        lista = Collections.checkedList(criteria.list(), ControlHoras.class);
         session.close();
         return lista;
     }

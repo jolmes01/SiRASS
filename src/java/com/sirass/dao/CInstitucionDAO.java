@@ -2,6 +2,7 @@ package com.sirass.dao;
 
 import com.sirass.HibernateUtil;
 import com.sirass.model.CInstitucion;
+import java.util.Collections;
 import java.util.List;
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
@@ -59,7 +60,7 @@ public class CInstitucionDAO extends DAO {
         try {
             transaction = session.beginTransaction();
             Criteria criteria = session.createCriteria(CInstitucion.class);
-            lista = (List<CInstitucion>) criteria.list();
+            lista = Collections.checkedList(criteria.list(), CInstitucion.class);
             transaction.commit();
         } catch (HibernateException ex) {
             System.out.println("Error obteniendo institucion");

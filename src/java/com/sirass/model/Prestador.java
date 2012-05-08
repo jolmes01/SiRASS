@@ -1,5 +1,6 @@
 package com.sirass.model;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,7 +9,7 @@ import java.util.Date;
  *
  * @author gomezhyuuga
  */
-public class Prestador {
+public class Prestador implements Serializable {
 
     private int inscripcion;
     private int idPrestador;

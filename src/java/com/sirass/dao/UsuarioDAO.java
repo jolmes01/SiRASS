@@ -5,10 +5,12 @@
 package com.sirass.dao;
 
 import com.sirass.HibernateUtil;
+import com.sirass.model.Prestador;
 import com.sirass.model.Usuario;
 import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -80,5 +82,23 @@ public class UsuarioDAO extends DAO {
             System.out.println("El usuario no existe!");
             return null;
         }
+    }
+    
+    /**
+     * Obtiene el ID de un prestador a paritr de su nombre de usuario
+     * @param username - Nombre de usuario
+     * @return - El id del prestador, 0 si no es un prestador o no se encuentra
+     */
+    public int getIdPrestador(String username) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Prestador p = (Prestador) session.createCriteria(Usuario.class)
+                .add(Restrictions.eq("usuario", username))
+                .setFetchMode("prestador", FetchMode.SELECT)
+                .setFetchMode("institucion", FetchMode.SELECT)
+                .setProjection(Projections.property("prestador"))
+                .uniqueResult();
+        session.close();
+        if (p != null) return p.getIdPrestador();
+        else return 0;
     }
 }

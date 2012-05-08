@@ -18,7 +18,8 @@ public class TestPrestador {
     public static void main(String[] args) {
         
         PrestadorDAO dao = new PrestadorDAO();
-        int idInscripcion = dao.getCurrentInscripcion("prestador1");
+        int idInscripcion = 0;
+        idInscripcion = dao.getCurrentInscripcion("prestador1");
         System.out.println("idInscripcion: " + idInscripcion);
     }
 }
