@@ -21,9 +21,10 @@ public class UsuarioTest {
         
 //        System.out.println(dao.exists("gomezhyuuga"));
 //        
-//        Usuario usuario = dao.getByUsername("gomezhyuuga1234");
-//        usuario.getInfo();
+        Usuario usuario = dao.getByUsername("gomezhyuuga1234");
+        Usuario usuario2 = dao.getByUsername("institucion1");
+        usuario2.getInfo();
 //        usuario.getPrestador().getInfo();
-        System.out.println(dao.getIdPrestador("gomezhyuuga"));
+//        System.out.println(dao.getIdPrestador("gomezhyuuga"));
     }
 }

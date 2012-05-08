@@ -22,16 +22,16 @@
         </header>
         <!-- Container
     ================================================== -->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row-fluid">
                 <!-- Sidebar
                 ================================================== -->
                 <jsp:include page="jspf/sidebar.jsp">
-                    <jsp:param name="active" value="7" />
+                    <jsp:param name="active" value="1" />
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
-                <div class="container bg span9">
+                <div class="container bg span7">
                     <div id="contenido">
                         <%
                             if (request.getParameter("idBimensual") != null) {
@@ -43,7 +43,7 @@
                                     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                         %>
                         <div class="row">
-                            <div class="span7">
+                            <div class="span5 pull-left">
                                 <%
                                     String label = "label-";
                                     int idEstado = informe.getEstado().getIdEstado();
@@ -63,8 +63,8 @@
                                 </h1>
                                 <h3>Revisor: <%= informe.getModificadoPor()%></h3>
                             </div>
-                            <div class="span5 right">
-                                <h4>N&deg; reporte: <%= informe.getNumReporte() %></h4>
+                            <div class="span2 pull-right right">
+                                <h4>N&deg; reporte: <%= informe.getNumReporte()%></h4>
                                 <h4>Del: <%= dateFormat.format(informe.getInicioPeriodo())%></h4>
                                 <h4>Al: <%= dateFormat.format(informe.getTerminoPeriodo())%></h4>
                                 <h6>id: <%= id%></h6>
@@ -72,20 +72,16 @@
                         </div>
                         <br />
                         <div class="row">
-                            <div class="span4">
-                                <h4>Mes: <%= informe.getHorasBimestre() %></h4>
+                            <div class="span2 pull-left">
+                                <h4>Mes: <%= informe.getHorasBimestre()%></h4>
                             </div>
-                            <div class="span4 offset2">
+                            <div class="span2 offset1">
                                 <h4>Acumuladas: <%= informe.getHorasAcumuladas()%></h4>
                             </div>
                         </div>
                         <br />
-                        <div class="row">
-                            <div class="span12">
-                                <h2>Actividades</h2>
-                                <p class="actividades"><%= informe.getActividades() %></p>
-                            </div>
-                        </div>
+                        <h2>Actividades</h2>
+                        <p class="actividades"><%= informe.getActividades()%></p>
                         <%
                                 } catch (Exception e) {
                                     e.printStackTrace();

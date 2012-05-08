@@ -23,16 +23,16 @@
         </header>
         <!-- Container
     ================================================== -->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row-fluid">
                 <!-- Sidebar
                 ================================================== -->
                 <jsp:include page="jspf/sidebar.jsp">
-                    <jsp:param name="active" value="6" />
+                    <jsp:param name="active" value="1" />
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
-                <div class="container bg span9">
+                <div class="container bg span7">
                     <div id="contenido">
                         <%
                             if (request.getParameter("idControl") != null) {
@@ -45,7 +45,7 @@
                                     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                         %>
                         <div class="row">
-                            <div class="span7">
+                            <div class="span5 pull-left">
                                 <%
                                     String label = "label-";
                                     int idEstado = controlHoras.getEstado().getIdEstado();
@@ -66,7 +66,7 @@
                                 <h3>Supervisor: <%= controlHoras.getSupervisor()%></h3>
                                 <h3>Revisor: <%= controlHoras.getModificadoPor()%></h3>
                             </div>
-                            <div class="span5 right">
+                            <div class="span2 pull-right right">
                                 <h4>N&deg; reporte: <%= controlHoras.getnReporte()%></h4>
                                 <h4>Del: <%= dateFormat.format(controlHoras.getFechaInicio())%></h4>
                                 <h4>Al: <%= dateFormat.format(controlHoras.getFechaFin())%></h4>
@@ -75,19 +75,18 @@
                         </div>
                         <br />
                         <div class="row">
-                            <div class="span4">
+                            <div class="span2 pull-left">
                                 <h4>Mes: <%= controlHoras.getHorasMes()%></h4>
                             </div>
-                            <div class="span4 offset2">
+                            <div class="span2 offset1">
                                 <h4>Anteriores: <%= controlHoras.getHorasAnteriores()%></h4>
                             </div>
-                            <div class="span4 offset2">
+                            <div class="span2 pull-right">
                                 <h4>Acumuladas: <%= controlHoras.getHorasAcumuladas()%></h4>
                             </div>
                         </div>
                         <br />
-                        <div class="row">
-                            <div class="span12">
+<!--                        <div class="row">-->
                                 <h2>Registro de horas</h2>
                                 <table class="table table-bordered table-striped">
                                     <thead>
@@ -117,8 +116,7 @@
                                         %>
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
+<!--                        </div>-->
                         <%
                                 } catch (Exception e) {
                                     out.println("<h1>Control de Horas inválido!</h1>");

@@ -23,7 +23,7 @@
             <div class="control-group">
                 <label class="control-label" for="institucionList">Instituci&oacute;n o dependencia:</label>
                 <div class="controls">
-                    <select id="institucionList" name="institucionList" onchange="obtenerPlanteles(this)">
+                    <select class="input-xlarge" id="institucionList" name="institucionList" onchange="obtenerPlanteles(this)">
                         <!-- Lista de instituciones -->
                         <% CInstitucionDAO dao = new CInstitucionDAO();
                             List<CInstitucion> lista = dao.getAll();
@@ -55,7 +55,7 @@
             <div class="control-group">
                 <label class="control-label" for="plantelesList">Plantel:</label>
                 <div class="controls">
-                    <select id="plantelesList" name="plantelesList">
+                    <select class="input-xlarge" id="plantelesList" name="plantelesList">
                         <option value="0">-- Elegir alguno existente --</option>
                         <option value="0">Ninguno</option>
                     </select>

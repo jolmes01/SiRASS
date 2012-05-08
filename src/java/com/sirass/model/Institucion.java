@@ -11,7 +11,7 @@ public class Institucion implements Serializable {
 
     private int idInstitucion;
     private int idCInstitucion;
-    private int idPlantel;
+    private Integer idPlantel;
     private String domicilio;
     private String area;
     private String responsable;
@@ -137,11 +137,11 @@ public class Institucion implements Serializable {
         this.idInstitucion = idInstitucion;
     }
 
-    public int getIdPlantel() {
+    public Integer getIdPlantel() {
         return idPlantel;
     }
 
-    public void setIdPlantel(int idPlantel) {
+    public void setIdPlantel(Integer idPlantel) {
         this.idPlantel = idPlantel;
     }
 }

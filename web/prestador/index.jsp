@@ -17,16 +17,16 @@
 	</header>
 	<!-- Container
     ================================================== -->
-    <div class="container">
-    	<div class="row-fluid">
-    		<!-- Sidebar
-    		================================================== -->
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <!-- Sidebar
+                ================================================== -->
                 <jsp:include page="jspf/sidebar.jsp">
-                    <jsp:param name="active" value="0" />
+                    <jsp:param name="active" value="1" />
                 </jsp:include>
-    		<!-- Contenido
-    		================================================== -->
-                <div class="container bg span9">
+                <!-- Contenido
+                ================================================== -->
+                <div class="container bg span7">
                     <div id="contenido">
                     <h1>Bienvenido, <%= (String) session.getAttribute("username") %></h1>
     			<p>Actualmente no est&aacute;s inscrito a ning&uacute;n programa de Servicio Social.</p>

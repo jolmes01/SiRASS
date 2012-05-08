@@ -6,7 +6,7 @@
             <generator class="increment" />
         </id>
         <property column="idCInstitucion" name="idCInstitucion" type="integer" not-null="true" />
-        <property column="idPlantel" name="idPlantel" type="integer" not-null="false" />
+        <property column="idPlantel" name="idPlantel" type="java.lang.Integer" not-null="false" />
         <property column="domicilio" length="60" name="domicilio" not-null="true" type="java.lang.String"/>
         <property column="area" length="50" name="area" not-null="false" type="java.lang.String"/>
         <property column="responsable" length="50" name="responsable" not-null="true" type="java.lang.String"/>

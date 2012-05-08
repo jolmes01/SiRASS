@@ -25,16 +25,16 @@
         </header>
         <!-- Container
     ================================================== -->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row-fluid">
                 <!-- Sidebar
                 ================================================== -->
                 <jsp:include page="jspf/sidebar.jsp">
-                    <jsp:param name="active" value="6" />
+                    <jsp:param name="active" value="1" />
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
-                <div class="container bg span9">
+                <div class="container bg span7">
                     <div id="contenido">
                         <h1>Historial de Control de Horas</h1>
                         <%

@@ -35,9 +35,9 @@
 </div> <!-- row end -->
 <!-- Tabla de registro de horas
 ================================================== -->
-<div class="row">
+<!--<div class="row">-->
     <!-- datos del reporte -->
-    <div class="span12">
+<!--    <div class="span7">-->
         <fieldset>
             <legend>Registra tus horas</legend>
             <div class="form-actions">
@@ -87,5 +87,5 @@
                 </tbody>
             </table>
         </fieldset>
-    </div> <!-- end tabla -->
-</div> <!-- row end -->
+<!--    </div>  end tabla -->
+<!--</div>  row end -->

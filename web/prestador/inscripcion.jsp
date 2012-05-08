@@ -19,7 +19,7 @@
         </header>
         <!-- Container
     ================================================== -->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row-fluid">
                 <!-- Sidebar
                 ================================================== -->
@@ -28,7 +28,7 @@
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
-                <div class="container bg span9">
+                <div class="container bg span7">
                     <div id="contenido">
                         <h1>Inscripci&oacute;n a un programa</h1>
                         <p>Para inscribirte en un programa de Servicio Social llena los siguientes datos:</p>

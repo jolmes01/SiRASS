@@ -19,27 +19,23 @@
         </header>
         <!-- Container
     ================================================== -->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row-fluid">
                 <!-- Sidebar
                 ================================================== -->
                 <jsp:include page="jspf/sidebar.jsp">
-                    <jsp:param name="active" value="5" />
+                    <jsp:param name="active" value="1" />
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
-                <div class="container bg span9">
+                <div class="container bg span7">
                     <div id="contenido">
                         <h1>Informe Bimensual</h1>
                         <form action="../jspf/forms/dataForm.jsp" method="post">
-                            <div id="row">
                                 <%@include file="jspf/informeBim.jsp" %>
-                                <div class="span9 center">
-                                    <div class="form-actions">
-                                        <button type="submit" class="btn btn-primary btn-large">Enviar</button>
-                                        <button type="reset" id="reset" class="btn btn-primary btn-large">Limpiar campos</button>
-                                    </div>
-                                </div>
+                            <div class="form-actions center">
+                                <button type="submit" class="btn btn-primary btn-large">Enviar</button>
+                                <button type="reset" id="reset" class="btn btn-primary btn-large">Limpiar campos</button>
                             </div>
                         </form>
                     </div>

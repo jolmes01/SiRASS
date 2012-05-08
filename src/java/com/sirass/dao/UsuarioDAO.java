@@ -69,7 +69,7 @@ public class UsuarioDAO extends DAO {
         Usuario usuario = (Usuario) session.createCriteria(Usuario.class)
                 .add(Restrictions.eq("usuario", username))
                 .setFetchMode("prestador", FetchMode.JOIN)
-                .setFetchMode("institucion", FetchMode.SELECT)
+                .setFetchMode("institucion", FetchMode.JOIN)
                 .setFetchMode("administrador", FetchMode.SELECT)
                 .setFetchMode("roles", FetchMode.JOIN)
                 .uniqueResult();
