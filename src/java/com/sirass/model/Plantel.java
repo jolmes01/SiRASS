@@ -19,6 +19,11 @@ public class Plantel {
     public Plantel() {
     }
 
+    public Plantel(int idPlantel, int idCInstitucion) {
+        this.idPlantel = idPlantel;
+        this.idCInstitucion = idCInstitucion;
+    }
+
     public Date getCreacion() {
         return creacion;
     }

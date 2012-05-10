@@ -1,12 +1,15 @@
-package com.sirass.model;
+package com.sirass.model.prestador;
 
+import com.sirass.model.CInstitucion;
+import com.sirass.model.Plantel;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author gomezhyuuga
  */
-public class Inscripcion {
+public class Inscripcion implements Serializable {
 
     private int idInscripcion;
     private Prestador prestador;
@@ -31,8 +34,8 @@ public class Inscripcion {
     private String matricula;
     private int anioIngreso;
     private short semestre;
-    private float avanceCursos;
-    private float promedio;
+    private double avanceCursos;
+    private double promedio;
     private short nCursosBasicos;
     private short nCursosSuperior;
     private short creditos;
@@ -71,11 +74,11 @@ public class Inscripcion {
         this.anioIngreso = anioIngreso;
     }
 
-    public float getAvanceCursos() {
+    public double getAvanceCursos() {
         return avanceCursos;
     }
 
-    public void setAvanceCursos(float avanceCursos) {
+    public void setAvanceCursos(double avanceCursos) {
         this.avanceCursos = avanceCursos;
     }
 
@@ -319,11 +322,11 @@ public class Inscripcion {
         this.programaInst = programaInst;
     }
 
-    public float getPromedio() {
+    public double getPromedio() {
         return promedio;
     }
 
-    public void setPromedio(float promedio) {
+    public void setPromedio(double promedio) {
         this.promedio = promedio;
     }
 

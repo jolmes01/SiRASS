@@ -1,8 +1,8 @@
 package com.sirass.dao;
 
 import com.sirass.HibernateUtil;
-import com.sirass.model.ControlHoras;
-import com.sirass.model.EstadoReporte;
+import com.sirass.model.prestador.ControlHoras;
+import com.sirass.model.prestador.EstadoReporte;
 import java.util.Collections;
 import java.util.List;
 import org.hibernate.Criteria;

@@ -1,5 +1,6 @@
 package com.sirass.model;
 
+import com.sirass.model.prestador.Prestador;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;

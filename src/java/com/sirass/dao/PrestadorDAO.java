@@ -1,7 +1,7 @@
 package com.sirass.dao;
 
 import com.sirass.HibernateUtil;
-import com.sirass.model.Prestador;
+import com.sirass.model.prestador.Prestador;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;

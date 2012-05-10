@@ -4,7 +4,7 @@
  */
 package com.sirass.dao;
 
-import com.sirass.model.Prestador;
+import com.sirass.model.prestador.Prestador;
 import com.sirass.model.Rol;
 import com.sirass.model.RolUsuario;
 import com.sirass.model.Usuario;

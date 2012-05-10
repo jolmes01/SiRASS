@@ -1,41 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.sirass.model.Inscripcion" table="DInscripcion">
-        <id column="idinscripcion" name="idInscripcion" length="11" type="integer">
-            <generator class="native" />
-        </id>
-        <property column="carrera" name="carrera" type="string" length="50" />
-        <property column="matricula" name="matricula" type="string" length="20" />
-        <property column="anoIngreso" name="anioIngreso" type="integer" length="11" />
-        <property column="semestre" name="semestre" type="short" length="4" />
-        <property column="avanceCursos" name="avanceCursos" type="float" />
-        <property column="promedio" name="promedio" type="float" />
-        <property column="nCursosBasicos" name="nCursosBasicos" type="short" length="4" />
-        <property column="nCursosSuperior" name="nCursosSuperior" type="short" length="4" />
-        <property column="creditos" name="creditos" type="short" length="4" />
-        <property column="programaInst" name="programaInst" type="string" length="100" />
-        <property column="cvePorgramaInst" name="cveProgramaInst" type="string" length="30" />
-        <property column="id" name="cveProgramaInst" type="string" length="30" />
-        <property column="idPrograma" name="idPrograma" type="integer" length="11" />
-        <property column="programa" name="programa" type="string" length="100" />
-        <property column="cvePrograma" name="cvePrograma" type="string" length="16" />
-        <property column="fechaInicio" name="fechaInicio" type="date" />
-        <property column="fechaFin" name="fechaFin" type="date" />
-        <property column="difundir" name="difundir" type="boolean" not-null="true" />
-        <property column="responsable" name="responsable" type="string" length="80" not-null="true" />
-        <property column="cargoResponsable" name="cargoResponsable" type="string" length="50" not-null="true" />
-        
-        <!-- relaciones -->
-        <many-to-one column="estado" name="estado" class="com.sirass.model.EstadoInscripcion" cascade="evict" />
-        <many-to-one column="tipo" name="tipo" class="com.sirass.model.TipoInscripcion" cascade="evict" />
-        <many-to-one column="idInstitucion" name="institucion" class="com.sirass.model.Institucion" cascade="evict" />
-        <many-to-one column="idPlantel" name="plantel" class="com.sirass.model.Plantel" cascade="evict" />
-        <many-to-one column="idPrograma" name="programa" class="com.sirass.model.Plantel" cascade="evict" />
-        
-        <!-- del registro -->
-        <property column="creacion" name="creacion" not-null="true" type="java.util.Date"/>
-        <property column="ultimaModif" name="ultimaModif" not-null="true" type="java.util.Date"/>
-        <property column="modificadoPor" length="15" name="modificadoPor" not-null="true" type="java.lang.String"/>
-    </class>
+  <class name="com.sirass.model.prestador.Inscripcion" table="DInscripcion">
+    <id column="idinscripcion" length="11" name="idInscripcion" type="integer">
+      <generator class="native"/>
+    </id>
+    <property column="carrera" length="50" name="carrera" type="string"/>
+    <property column="matricula" length="20" name="matricula" type="string"/>
+    <property column="anoIngreso" length="11" name="anioIngreso" type="integer"/>
+    <property column="semestre" length="4" name="semestre" type="short"/>
+    <property column="avanceCursos" name="avanceCursos" type="double"/>
+    <property column="promedio" name="promedio" type="double"/>
+    <property column="nCursosBasicos" length="4" name="nCursosBasicos" type="short"/>
+    <property column="nCursosSuperior" length="4" name="nCursosSuperior" type="short"/>
+    <property column="creditos" name="creditos" type="short"/>
+    <property column="programaInst" length="100" name="programaInst" type="string"/>
+    <property column="cvePorgramaInst" length="30" name="cveProgramaInst" type="string"/>
+    <property column="idPrograma" length="11" name="idPrograma" type="integer"/>
+    <property column="programa" length="100" name="programa" type="string"/>
+    <property column="cvePrograma" length="16" name="cvePrograma" type="string"/>
+    <property column="fechaInicio" name="fechaInicio" type="date"/>
+    <property column="fechaFin" name="fechaFin" type="date"/>
+    <property column="difundir" name="difundir" not-null="true" type="boolean"/>
+    <property column="responsable" length="80" name="responsable" not-null="true" type="string"/>
+    <property column="cargoResponsable" length="50" name="cargoResponsable" not-null="true" type="string"/>
+    <property column="observaciones" length="150" name="observaciones" not-null="false" type="string"/>
+    <!-- relaciones -->
+    <many-to-one cascade="evict" class="com.sirass.model.prestador.EstadoInscripcion" column="estado" name="estado"/>
+    <many-to-one cascade="evict" class="com.sirass.model.prestador.TipoInscripcion" column="tipo" name="tipo" not-null="true" />
+    <many-to-one cascade="evict" class="com.sirass.model.CInstitucion" column="idInstitucion" name="institucion"/>
+    <many-to-one cascade="evict" class="com.sirass.model.Plantel" column="idPlantel" name="plantel"/>
+    <many-to-one cascade="evict" class="com.sirass.model.prestador.Prestador" column="idPrestador" name="prestador"/>
+<!--    <many-to-one cascade="evict" class="com.sirass.model.programass.ProgramaSS" column="idPrograma" name="programa"/>-->
+    <!-- del registro -->
+    <property column="creacion" name="creacion" not-null="true" type="java.util.Date"/>
+    <property column="ultimaModif" name="ultimaModif" not-null="true" type="java.util.Date"/>
+    <property column="modificadoPor" length="15" name="modificadoPor" not-null="true" type="java.lang.String"/>
+  </class>
 </hibernate-mapping>

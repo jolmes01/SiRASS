@@ -5,7 +5,7 @@
 package com.sirass.servlet;
 
 import com.sirass.dao.InformeBimensualDAO;
-import com.sirass.model.InformeBimensual;
+import com.sirass.model.prestador.InformeBimensual;
 import com.sirass.model.Test;
 import com.sirass.service.ProcessRequest;
 import java.io.IOException;

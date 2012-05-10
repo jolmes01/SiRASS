@@ -5,7 +5,7 @@
 package com.sirass.dao;
 
 import com.sirass.HibernateUtil;
-import com.sirass.model.Prestador;
+import com.sirass.model.prestador.Prestador;
 import com.sirass.model.Usuario;
 import org.hibernate.FetchMode;
 import org.hibernate.Session;

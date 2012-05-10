@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.sirass.model.Usuario" table="MUsuario">
-        <id column="usuario" name="usuario" type="string"/>
-        <property column="password" length="15" name="password" not-null="true" type="java.lang.String"/>
+  <class name="com.sirass.model.Usuario" table="MUsuario">
+    <id column="usuario" name="usuario" type="string"/>
+    <property column="password" length="15" name="password" not-null="true" type="java.lang.String"/>
     <!-- del registro -->
-        <property column="creacion" name="creacion" not-null="true" type="java.util.Date"/>
-        <property column="ultimaModif" name="ultimaModif" not-null="true" type="java.util.Date"/>
-        <property column="modificadoPor" length="15" name="modificadoPor" not-null="true" type="java.lang.String"/>
+    <property column="creacion" name="creacion" not-null="true" type="java.util.Date"/>
+    <property column="ultimaModif" name="ultimaModif" not-null="true" type="java.util.Date"/>
+    <property column="modificadoPor" length="15" name="modificadoPor" not-null="true" type="java.lang.String"/>
     <!-- Relaciones -->
-        <many-to-one cascade="all" class="com.sirass.model.Prestador" column="idPrestador" name="prestador" not-null="false" unique="true" />
-        <many-to-one cascade="all" class="com.sirass.model.Institucion" column="idInstitucion" name="institucion" not-null="false" unique="true" />
-        <many-to-one cascade="all" class="com.sirass.model.Administrador" column="idAdministrador" name="administrador" not-null="false" unique="true" />
-        <set name="roles" table="MRolUsuario" cascade="all">
-            <key column="usuario" />
-            <many-to-many column="rol" unique="true" class="com.sirass.model.Rol" />
-        </set>
-    </class>
+    <many-to-one cascade="all" class="com.sirass.model.prestador.Prestador" column="idPrestador" name="prestador" not-null="false" unique="true"/>
+    <many-to-one cascade="all" class="com.sirass.model.Institucion" column="idInstitucion" name="institucion" not-null="false" unique="true"/>
+    <many-to-one cascade="all" class="com.sirass.model.Administrador" column="idAdministrador" name="administrador" not-null="false" unique="true"/>
+    <set cascade="all" name="roles" table="MRolUsuario">
+      <key column="usuario"/>
+      <many-to-many class="com.sirass.model.Rol" column="rol" unique="true"/>
+    </set>
+  </class>
 </hibernate-mapping>

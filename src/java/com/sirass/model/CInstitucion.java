@@ -22,6 +22,10 @@ public class CInstitucion implements Serializable {
     public CInstitucion() {
     }
 
+    public CInstitucion(int idCInstitucion) {
+        this.idCInstitucion = idCInstitucion;
+    }
+
     public CInstitucion(String nombre) {
         this.nombre = nombre;
     }

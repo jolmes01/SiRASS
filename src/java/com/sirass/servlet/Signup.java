@@ -1,5 +1,6 @@
 package com.sirass.servlet;
 
+import com.sirass.model.prestador.Prestador;
 import com.sirass.dao.DAO;
 import com.sirass.dao.UsuarioDAO;
 import com.sirass.model.*;

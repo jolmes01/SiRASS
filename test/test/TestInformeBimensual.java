@@ -5,7 +5,7 @@
 package test;
 
 import com.sirass.dao.InformeBimensualDAO;
-import com.sirass.model.InformeBimensual;
+import com.sirass.model.prestador.InformeBimensual;
 import java.util.Iterator;
 import java.util.List;
 

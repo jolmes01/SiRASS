@@ -1,7 +1,7 @@
 package com.sirass.dao;
 
 import com.sirass.HibernateUtil;
-import com.sirass.model.InformeBimensual;
+import com.sirass.model.prestador.InformeBimensual;
 import java.util.Collections;
 import java.util.List;
 import org.hibernate.Criteria;

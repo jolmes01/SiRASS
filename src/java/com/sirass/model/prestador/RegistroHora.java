@@ -1,4 +1,4 @@
-package com.sirass.model;
+package com.sirass.model.prestador;
 
 import java.sql.Time;
 import java.util.Date;

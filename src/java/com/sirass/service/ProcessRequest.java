@@ -1,7 +1,7 @@
 package com.sirass.service;
 
-import com.sirass.model.EstadoReporte;
-import com.sirass.model.InformeBimensual;
+import com.sirass.model.prestador.EstadoReporte;
+import com.sirass.model.prestador.InformeBimensual;
 import com.sirass.util.FormReflection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

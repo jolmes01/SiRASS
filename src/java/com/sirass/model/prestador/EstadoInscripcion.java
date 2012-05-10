@@ -1,18 +1,18 @@
-package com.sirass.model;
+package com.sirass.model.prestador;
 
 /**
  *
  * @author gomezhyuuga
  */
-public class EstadoReporte {
+public class EstadoInscripcion {
 
-    private String descripcion;
     private short idEstado;
+    private String descripcion;
 
-    public EstadoReporte() {
+    public EstadoInscripcion() {
     }
 
-    public EstadoReporte(short idEstado) {
+    public EstadoInscripcion(short idEstado) {
         this.idEstado = idEstado;
     }
 
@@ -30,9 +30,5 @@ public class EstadoReporte {
 
     public void setIdEstado(short idEstado) {
         this.idEstado = idEstado;
-    }
-
-    public void printInfo() {
-        System.out.println("idEstado: " + this.idEstado + " ( " + descripcion + " )");
     }
 }

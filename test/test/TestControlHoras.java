@@ -5,9 +5,9 @@
 package test;
 
 import com.sirass.dao.ControlHorasDAO;
-import com.sirass.model.ControlHoras;
-import com.sirass.model.EstadoReporte;
-import com.sirass.model.RegistroHora;
+import com.sirass.model.prestador.ControlHoras;
+import com.sirass.model.prestador.EstadoReporte;
+import com.sirass.model.prestador.RegistroHora;
 import java.sql.Time;
 import java.util.*;
 import sun.tools.tree.ThisExpression;

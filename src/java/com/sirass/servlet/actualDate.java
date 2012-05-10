@@ -9,7 +9,7 @@ import com.sirass.dao.InstitucionDAO;
 import com.sirass.dao.PrestadorDAO;
 import com.sirass.dao.UsuarioDAO;
 import com.sirass.model.Administrador;
-import com.sirass.model.Prestador;
+import com.sirass.model.prestador.Prestador;
 import com.sirass.model.Usuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
