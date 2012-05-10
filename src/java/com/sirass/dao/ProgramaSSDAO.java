@@ -16,8 +16,22 @@ import org.hibernate.transform.AliasToBeanResultTransformer;
  *
  * @author gomezhyuuga
  */
-public class ProgramaSSDAO {
+public class ProgramaSSDAO extends DAO {
     
+    /**
+     * Guarda un programa de SS en la BD
+     * @param programa - El programa con todos sus datos
+     * @return - 1 si se guardó, 0 si hubo un error
+     */
+    public int insert(ProgramaSS programa) {
+        return super.insert(programa);
+    }
+    
+    /**
+     * Obtiene pocos datos de todos los programas (nombre, id y clave)
+     * 
+     * @return - Lista de Programas con poca información
+     */
     public List<ProgramaSS> getListFew() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         ProgramaSS programa = null;
