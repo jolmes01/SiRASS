@@ -38,11 +38,11 @@
                         <%
                             String username = (String) session.getAttribute("username");
                             if (username != null) {
-                            InformeBimensualDAO dao = new InformeBimensualDAO();
-                            //dao.getListByUsername(session.getAttribute("username"))
-                            List<InformeBimensual> lista = dao.getByUsername(username);
-                            if (!lista.isEmpty() || lista != null) {
-                                Iterator<InformeBimensual> it = lista.iterator();
+                                InformeBimensualDAO dao = new InformeBimensualDAO();
+                                //dao.getListByUsername(session.getAttribute("username"))
+                                List<InformeBimensual> lista = dao.getByUsername(username);
+                                if (!lista.isEmpty() || lista != null) {
+                                    Iterator<InformeBimensual> it = lista.iterator();
                         %>
                         <!--                        <form action="../jspf/forms/dataForm.jsp" method="post">-->
                         <form action="./verBimensual.jsp" method="get">
@@ -66,7 +66,7 @@
                                                 InformeBimensual c = it.next();
                                         %>
                                         <tr>
-                                            <td><%= c.getNumReporte() %></td>
+                                            <td><%= c.getNumReporte()%></td>
                                             <td><%= dateFormat.format(c.getInicioPeriodo())%></td>
                                             <td><%= dateFormat.format(c.getTerminoPeriodo())%></td>
                                             <td><%= c.getHorasBimestre()%></td>
@@ -106,7 +106,7 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="#editar" id="editar">
+                                                            <a href="updateBimensual.jsp?idInforme=<%= id%>" id="editar">
                                                                 <i class="icon-edit"></i>
                                                                 Editar
                                                             </a>
@@ -121,7 +121,8 @@
                             </div>
                         </form>
                         <%
-                            } }
+                                }
+                            }
                         %>
                     </div>
                 </div>

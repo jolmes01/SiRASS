@@ -39,6 +39,7 @@
                                 if (idInscripcion == null) {
                                     PrestadorDAO dao = new PrestadorDAO();
                                     idInscripcion = dao.getCurrentInscripcion((String) session.getAttribute("username"));
+                                    session.setAttribute("inscripcion", idInscripcion);
                             %>
                             <input type="hidden" name="inscripcion" value="<%= idInscripcion%>" />        
                             <%                                
