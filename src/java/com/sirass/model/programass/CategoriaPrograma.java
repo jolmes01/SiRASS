@@ -12,6 +12,10 @@ class CategoriaPrograma {
     public CategoriaPrograma() {
     }
 
+    public CategoriaPrograma(int idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
