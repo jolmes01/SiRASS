@@ -27,6 +27,7 @@
         <mapping class="com.sirass.model.prestador.InformeBimensual" resource="com/sirass/model/hbm/InformeBimensual.hbm.xml"/>
         <mapping resource="com/sirass/model/hbm/Inscripcion.hbm.xml"/>
         <mapping resource="com/sirass/model/hbm/EstadoInscripcion.hbm.xml"/>
+        <mapping resource="com/sirass/model/hbm/CategoriaPrograma.hbm.xml"/>
         <mapping resource="com/sirass/model/hbm/TipoInscripcion.hbm.xml"/>
         <mapping resource="com/sirass/model/hbm/TipoPrograma.hbm.xml"/>
         <mapping resource="com/sirass/model/hbm/AlcancePrograma.hbm.xml"/>

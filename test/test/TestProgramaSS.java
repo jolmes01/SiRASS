@@ -29,8 +29,8 @@ public class TestProgramaSS {
         Iterator it2 = null;
         List<ResponsablePrograma> responsables = null;
         
-//        programa = dao.getByPK(2);
-//        programa.printInfo();
+        programa = dao.getByPK(2);
+        programa.printInfo();
         
 //        programa = dao.getByCve("CVE-4444");
 //        programa.printInfo();
@@ -44,7 +44,7 @@ public class TestProgramaSS {
 //            System.out.println(obj.getNombre());
 //        }
         
-        ResponsableProgramaDAO d = new ResponsableProgramaDAO();
+//        ResponsableProgramaDAO d = new ResponsableProgramaDAO();
 //        List<ResponsablePrograma> lista = d.getByPrograma(1);
 //        it2 = lista.iterator();
 //        while (it2.hasNext()) {

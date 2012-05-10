@@ -4,8 +4,16 @@
  */
 package com.sirass.servlet;
 
+import com.sirass.dao.InformeBimensualDAO;
+import com.sirass.model.prestador.EstadoReporte;
+import com.sirass.model.prestador.InformeBimensual;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,26 +37,37 @@ public class Update extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        if (request.getParameter("clase") != null &&
-                request.getParameter("clase").equals("com.sirass.model.prestador.InformeBimensual")) {
+        response.setContentType("text/plain;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        int status = 0;
+        if (request.getParameter("clase") != null
+                && request.getParameter("clase").equals("com.sirass.model.prestador.InformeBimensual")) {
             System.out.println("ok!");
+            InformeBimensualDAO dao = new InformeBimensualDAO();
+            InformeBimensual informe = new InformeBimensual();
+            informe.setIdInformeBimensual(Integer.parseInt(request.getParameter("idInforme")));
+            informe.setActividades(request.getParameter("actividades"));
+            informe.setHorasAcumuladas(Short.parseShort(request.getParameter("acumuladas")));
+            informe.setHorasBimestre(Short.parseShort(request.getParameter("horasBimestre")));
+            informe.setEstado(new EstadoReporte(Short.parseShort(request.getParameter("idEstado"))));
+            informe.setModificadoPor(request.getUserPrincipal().getName());
+            informe.setNumReporte(Short.parseShort(request.getParameter("numReporte")));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            try {
+                Date d = dateFormat.parse(request.getParameter("inicioPeriodo"));
+                informe.setInicioPeriodo(d);
+                d = dateFormat.parse(request.getParameter("terminoPeriodo"));
+                informe.setTerminoPeriodo(d);
+            } catch (ParseException ex) {
+                Logger.getLogger(Update.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            status = dao.update(informe);
         }
-        
+
         PrintWriter out = response.getWriter();
         try {
-            /*
-             * TODO output your page here. You may use following sample code.
-             */
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Update</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Update at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {            
+            out.print(status);
+        } finally {
             out.close();
         }
     }

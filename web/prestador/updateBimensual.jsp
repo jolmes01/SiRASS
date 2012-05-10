@@ -45,6 +45,7 @@
                         <form action="/SiRASS/Update" method="get">
                             <input type="hidden" name="username" value="<%= session.getAttribute("username")%>" />
                             <input type="hidden" name="idInforme" value="<%= informe.getIdInformeBimensual()%>" />
+                            <input type="hidden" name="idEstado" value="<%= informe.getEstado().getIdEstado()%>" />
                             <%
                                 Integer idInscripcion = (Integer) session.getAttribute("inscripcion");
                                 if (idInscripcion == null) {
@@ -122,6 +123,19 @@
                                 <button type="reset" id="reset" class="btn btn-primary btn-large">Limpiar campos</button>
                             </div>
                         </form>
+                        <div class="modal" id="modalOK">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal">×</button>
+                                <h3>Modal header</h3>
+                            </div>
+                            <div class="modal-body">
+                                <p>One fine body…</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#" class="btn">Close</a>
+                                <a href="#" class="btn btn-primary">Save changes</a>
+                            </div>
+                        </div>
                         <%
                                 } catch (Exception e) {
                                     out.print("<h1>Informe inválido!</h1>");
@@ -146,6 +160,21 @@
                     dateFormat: "dd-mm-yy"
                 });
                 $('#inicioPeriodo, #terminoPeriodo').datepicker();
+                $('#formulario').submit(function(e) {
+                    e.preventDefault();
+                    var jqxhr = $.post("/SiRASS/Update", $('#formulario').serialize())
+                    .success(function(data, textStatus, jqXHR) {
+                        console.log("########## Request de cambio #############");
+                        console.log("data: " + data);
+                        console.log("textStatus: " + textStatus);
+                        // Detectar si se realizó el registro correctamente
+                        if (data == 1) {    // Se realizó correctamente
+                            // Mostrar modalDialog
+                            var modal = $('#modalOK');
+                            modal.modal('show');
+                        }
+                    })
+                });
             });
         </script>
     </body>

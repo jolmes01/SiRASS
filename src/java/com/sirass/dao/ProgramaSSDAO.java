@@ -67,6 +67,7 @@ public class ProgramaSSDAO {
         Criteria criteria = session.createCriteria(ProgramaSS.class)
                 .setFetchMode("tipo", FetchMode.JOIN)
                 .setFetchMode("alcance", FetchMode.JOIN)
+                .setFetchMode("categoria", FetchMode.JOIN)
                 .setFetchMode("poblacion", FetchMode.JOIN)
                 .setFetchMode("dias", FetchMode.JOIN)
                 .setFetchMode("responsables", FetchMode.JOIN)

@@ -37,11 +37,11 @@ public class ProgramaSS {
     private HorarioPrograma horario;
     private TipoTIempoPrograma tiempo;
     private Set<TipoPrograma> tipo;
-    private Set<TipoPrograma> alcance;
-    private Set<TipoPrograma> poblacion;
-    private Set<TipoPrograma> dias;
-    private Set<TipoPrograma> responsables;
-    private Set<TipoPrograma> actividad;
+    private Set<AlcancePrograma> alcance;
+    private Set<PoblacionPrograma> poblacion;
+    private Set<Dia> dias;
+    private Set<ResponsablePrograma> responsables;
+    private Set<ActividadPrograma> actividad;
     // Del registro
     private String modificadoPor;
     private Date ultimaModif;
@@ -52,6 +52,7 @@ public class ProgramaSS {
 
     public void printInfo() {
         System.out.println("idPrograma: " + this.idPrograma);
+        System.out.println("categoria: " + this.categoria.getDescripcion());
         System.out.println("idInstitucion: " + this.idInstitucion);
         System.out.println("cvePrograma: " + this.cvePrograma);
         System.out.println("institucion: " + this.institucion);
@@ -132,20 +133,44 @@ public class ProgramaSS {
         System.out.println("horario: " + this.horario.getIdHorario() + " (" + this.horario.getDescripcion() + ")");
     }
 
-    public Set<TipoPrograma> getActividad() {
+    public Set<ActividadPrograma> getActividad() {
         return actividad;
     }
 
-    public void setActividad(Set<TipoPrograma> actividad) {
+    public void setActividad(Set<ActividadPrograma> actividad) {
         this.actividad = actividad;
     }
 
-    public Set<TipoPrograma> getAlcance() {
+    public Set<AlcancePrograma> getAlcance() {
         return alcance;
     }
 
-    public void setAlcance(Set<TipoPrograma> alcance) {
+    public void setAlcance(Set<AlcancePrograma> alcance) {
         this.alcance = alcance;
+    }
+
+    public Set<Dia> getDias() {
+        return dias;
+    }
+
+    public void setDias(Set<Dia> dias) {
+        this.dias = dias;
+    }
+
+    public Set<PoblacionPrograma> getPoblacion() {
+        return poblacion;
+    }
+
+    public void setPoblacion(Set<PoblacionPrograma> poblacion) {
+        this.poblacion = poblacion;
+    }
+
+    public Set<ResponsablePrograma> getResponsables() {
+        return responsables;
+    }
+
+    public void setResponsables(Set<ResponsablePrograma> responsables) {
+        this.responsables = responsables;
     }
 
     public String getArea() {
@@ -186,14 +211,6 @@ public class ProgramaSS {
 
     public void setDesarrollo(String desarrollo) {
         this.desarrollo = desarrollo;
-    }
-
-    public Set<TipoPrograma> getDias() {
-        return dias;
-    }
-
-    public void setDias(Set<TipoPrograma> dias) {
-        this.dias = dias;
     }
 
     public String getDomicilio() {
@@ -324,28 +341,12 @@ public class ProgramaSS {
         this.plazas = plazas;
     }
 
-    public Set<TipoPrograma> getPoblacion() {
-        return poblacion;
-    }
-
-    public void setPoblacion(Set<TipoPrograma> poblacion) {
-        this.poblacion = poblacion;
-    }
-
     public String getRecursos() {
         return recursos;
     }
 
     public void setRecursos(String recursos) {
         this.recursos = recursos;
-    }
-
-    public Set<TipoPrograma> getResponsables() {
-        return responsables;
-    }
-
-    public void setResponsables(Set<TipoPrograma> responsables) {
-        this.responsables = responsables;
     }
 
     public String getResultados() {

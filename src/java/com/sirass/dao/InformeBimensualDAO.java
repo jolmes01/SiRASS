@@ -3,10 +3,9 @@ package com.sirass.dao;
 import com.sirass.HibernateUtil;
 import com.sirass.model.prestador.InformeBimensual;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
-import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
-import org.hibernate.Session;
+import org.hibernate.*;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
@@ -26,6 +25,12 @@ public class InformeBimensualDAO extends DAO {
         return super.insert(informe);
     }
     
+    /**
+     * Obtener un informe bimensual por su ID
+     * 
+     * @param id - ID del informe bimensual
+     * @return - InformeBimensual con sus respectivos datos
+     */
     public InformeBimensual getByPK(int id) {
         InformeBimensual informe = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -38,6 +43,12 @@ public class InformeBimensualDAO extends DAO {
         return informe;
     }
     
+    /**
+     * Obtener todos los informes bimensuales de un usuario
+     * 
+     * @param username - Nombre de usuario
+     * @return - Lista de informes bimensuales del usuario
+     */
     public List<InformeBimensual> getByUsername(String username) {
         List<InformeBimensual> informes = null;
         int idInscripcion = 0;
@@ -65,4 +76,34 @@ public class InformeBimensualDAO extends DAO {
         session.close();
         return lista;
     }
+    
+   public int update(InformeBimensual informe) {
+       Session session = HibernateUtil.getSessionFactory().openSession();
+       int status = 0;
+       Transaction trans = session.beginTransaction();
+       Query q = session.createQuery("from InformeBimensual where idInformeBimensual = :idInforme");
+       InformeBimensual nuevo = (InformeBimensual) q.setInteger("idInforme", informe.getIdInformeBimensual())
+               .list()
+               .get(0);
+       nuevo.setActividades(informe.getActividades());
+       nuevo.setEstado(informe.getEstado());
+       nuevo.setHorasAcumuladas(informe.getHorasAcumuladas());
+       nuevo.setHorasBimestre(informe.getHorasBimestre());
+       nuevo.setInicioPeriodo(informe.getInicioPeriodo());
+       nuevo.setTerminoPeriodo(informe.getTerminoPeriodo());
+       nuevo.setModificadoPor(informe.getModificadoPor());
+       nuevo.setNumReporte(informe.getNumReporte());
+       nuevo.setUltimaModif(new Date(System.currentTimeMillis()));
+       session.update(nuevo);
+
+       try {
+            trans.commit();
+            status = 1;
+       } catch (Exception e) {
+            trans.rollback();
+       } finally {
+            session.close();
+       }
+       return status;
+   }
 }

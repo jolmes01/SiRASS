@@ -21,9 +21,9 @@ public class TestInformeBimensual {
     public static void main(String[] args) {
         InformeBimensualDAO dao = new InformeBimensualDAO();
         List<InformeBimensual> lista = null;
-        
+
         lista = dao.getByUsername("prestador1");
-        
+
         System.out.println("-----------");
         System.out.println("-----------");
         Iterator<InformeBimensual> it = lista.iterator();
