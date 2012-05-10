@@ -4,12 +4,16 @@ package com.sirass.model.programass;
  *
  * @author JL Macias
  */
-class HorarioPrograma {
+public class HorarioPrograma {
 
     private short idHorario;
     private String descripcion;
 
     public HorarioPrograma() {
+    }
+
+    public HorarioPrograma(short idHorario) {
+        this.idHorario = idHorario;
     }
 
     public String getDescripcion() {

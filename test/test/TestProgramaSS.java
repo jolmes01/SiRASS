@@ -6,8 +6,8 @@ package test;
 
 import com.sirass.dao.ProgramaSSDAO;
 import com.sirass.dao.ResponsableProgramaDAO;
-import com.sirass.model.programass.ProgramaSS;
-import com.sirass.model.programass.ResponsablePrograma;
+import com.sirass.model.CInstitucion;
+import com.sirass.model.programass.*;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -60,9 +60,8 @@ public class TestProgramaSS {
         ProgramaSS prog = new ProgramaSS();
         prog.setIdInstitucion(1);
         prog.setCvePrograma("CVE-5555");
-//        prog.setCategoria(new Categori);
-//        prog.setCategoria(cp);
-//        prog.setInstitucion(cins.getById(1).getNombre());
+        prog.setCategoria(new CategoriaPrograma(1));
+        prog.setInstitucion("InstitucionX");
         prog.setArea("Programacion");
         prog.setDomicilio("jkhkjhgkjhg");
         prog.setTel("43215678");
@@ -76,14 +75,17 @@ public class TestProgramaSS {
         prog.setEvaluacion("fgsdfgfg");
         prog.setResultados("fgsdfgfg");
         prog.setLugar("fgsdfgfg");
-//        prog.setHorario(hp);
+        prog.setHorario(new HorarioPrograma((short) 1));
         prog.setPlazas(50);
         prog.setVacantes(40);
         prog.setObservaciones("fgdfhgdfhdfg");
-//        prog.setTiempo(ctt);
-//        prog.setFechaTiempo(fechadate);
+        prog.setTiempo(new TipoTIempoPrograma((short) 1));
+        prog.setFechaTiempo(curDate);
         prog.setCreacion(curDate);
         prog.setModificadoPor("System");
         prog.setUltimaModif(curDate);
+        
+        ProgramaSSDAO daoP = new ProgramaSSDAO();
+        daoP.insert(prog);
     }
 }
