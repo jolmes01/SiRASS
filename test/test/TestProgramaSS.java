@@ -8,6 +8,7 @@ import com.sirass.dao.ProgramaSSDAO;
 import com.sirass.dao.ResponsableProgramaDAO;
 import com.sirass.model.programass.ProgramaSS;
 import com.sirass.model.programass.ResponsablePrograma;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -54,8 +55,35 @@ public class TestProgramaSS {
 //        }
 //        ResponsablePrograma res = (ResponsablePrograma) d.getFirstByPrograma(1);
 //        System.out.println(res.getResponsable());
+        Date curDate = new Date(System.currentTimeMillis());
         
-        programa = new ProgramaSS();
-        
+        ProgramaSS prog = new ProgramaSS();
+        prog.setIdInstitucion(1);
+        prog.setCvePrograma("CVE-5555");
+//        prog.setCategoria(new Categori);
+//        prog.setCategoria(cp);
+//        prog.setInstitucion(cins.getById(1).getNombre());
+        prog.setArea("Programacion");
+        prog.setDomicilio("jkhkjhgkjhg");
+        prog.setTel("43215678");
+        prog.setTelExt("1234");
+        prog.setEmail("fgsd@gmail.com");
+        prog.setNombre("fgsdfgfg");
+        prog.setObjGeneral("fgsdfgfg");
+        prog.setJustificacion("fgsdfgfg");
+        prog.setDesarrollo("fgsdfgfg");
+        prog.setRecursos("fgsdfgfg");
+        prog.setEvaluacion("fgsdfgfg");
+        prog.setResultados("fgsdfgfg");
+        prog.setLugar("fgsdfgfg");
+//        prog.setHorario(hp);
+        prog.setPlazas(50);
+        prog.setVacantes(40);
+        prog.setObservaciones("fgdfhgdfhdfg");
+//        prog.setTiempo(ctt);
+//        prog.setFechaTiempo(fechadate);
+        prog.setCreacion(curDate);
+        prog.setModificadoPor("System");
+        prog.setUltimaModif(curDate);
     }
 }

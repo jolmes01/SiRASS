@@ -4,7 +4,7 @@ package com.sirass.model.programass;
  *
  * @author JL Macias
  */
-class CategoriaPrograma {
+public class CategoriaPrograma {
 
     private int idCategoria;
     private String descripcion;
