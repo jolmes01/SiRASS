@@ -1,15 +1,21 @@
 <div class="row">
     <div class="span3 pull-left">
         <fieldset>
-            <legend>Periodo reportado</legend>
+            <legend>Reporte</legend>
             <div class="control-group">
-                <label for="inicioPeriodo">De la fecha</label>
+                <label for="terminoPeriodo">N&deg; reporte:</label>
+                <div class="controls">
+                    <input type="text" name="numReporte" id="numReporte" class="input-medium" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="inicioPeriodo">De la fecha:</label>
                 <div class="controls">
                     <input type="text" name="inicioPeriodo" id="inicioPeriodo" class="input-medium" />
                 </div>
             </div>
             <div class="control-group">
-                <label for="terminoPeriodo">A la fecha</label>
+                <label for="terminoPeriodo">A la fecha:</label>
                 <div class="controls">
                     <input type="text" name="terminoPeriodo" id="terminoPeriodo" class="input-medium" />
                 </div>
@@ -17,15 +23,15 @@
     </div>
     <div class="span2 offset1">
         <fieldset>
-            <legend>Reporte</legend>
+            <legend>Horas</legend>
             <div class="control-group">
-                <label for="terminoPeriodo">N&deg; reporte</label>
+                <label for="acumuladas">Acumuladas:</label>
                 <div class="controls">
-                    <input type="text" name="numReporte" id="numReporte" class="input-medium" />
+                    <input type="text" name="acumuladas" id="acumuladas" class="input-medium" />
                 </div>
             </div>
             <div class="control-group">
-                <label for="horasBimestre">Horas realizadas</label>
+                <label for="horasBimestre">Bimestre:</label>
                 <div class="controls">
                     <input type="text" name="horasBimestre" id="horasBimestre" class="input-medium" />
                 </div>

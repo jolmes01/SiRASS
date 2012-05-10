@@ -1,8 +1,8 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Set"%>
-<%@page import="com.sirass.model.RegistroHora"%>
+<%@page import="com.sirass.model.prestador.RegistroHora"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="com.sirass.model.ControlHoras"%>
+<%@page import="com.sirass.model.prestador.ControlHoras"%>
 <%@page import="com.sirass.dao.ControlHorasDAO"%>
 <%@page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

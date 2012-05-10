@@ -1,3 +1,4 @@
+<%@page import="com.sirass.dao.PrestadorDAO"%>
 <%@page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -5,7 +6,6 @@
         <jsp:include page="/jspf/head.jsp">
             <jsp:param name="title" value="ControlHoras"/>
             <jsp:param name="datepicker" value="true" />
-            <jsp:param name="timepicker" value="true" />
             <jsp:param name="reg" value="true" />
         </jsp:include>
     </head>
@@ -31,13 +31,26 @@
                 <div class="container bg span7">
                     <div id="contenido">
                         <h1>Informe Bimensual</h1>
-<!--                        <form action="../jspf/forms/dataForm.jsp" method="post">-->
+                        <!--                        <form action="../jspf/forms/dataForm.jsp" method="post">-->
                         <form action="../FormCatcher" method="get">
-                            <input type="hidden" name="username" value="<%= session.getAttribute("username") %>" />
-                            <input type="hidden" name="inscripcion" value="1" />
-                            <input type="hidden" name="acumuladas" value="33" />
+                            <input type="hidden" name="username" value="<%= session.getAttribute("username")%>" />
+                            <%                                
+                                Integer idInscripcion = (Integer) session.getAttribute("inscripcion");
+                                if (idInscripcion == null) {
+                                    PrestadorDAO dao = new PrestadorDAO();
+                                    idInscripcion = dao.getCurrentInscripcion((String) session.getAttribute("username"));
+                            %>
+                            <input type="hidden" name="inscripcion" value="<%= idInscripcion%>" />        
+                            <%                                
+                            } else {
+                            %> 
+                            <input type="hidden" name="inscripcion" value="<%= (Integer) session.getAttribute("inscripcion")%>" />        
+                            <%                                    
+                                }
+                            %>
+
                             <input type="hidden" name="clase" value="com.sirass.model.InformeBimensual"/>
-                                <%@include file="jspf/informeBim.jsp" %>
+                            <%@include file="jspf/informeBim.jsp" %>
                             <div class="form-actions center">
                                 <button type="submit" class="btn btn-primary btn-large">Enviar</button>
                                 <button type="reset" id="reset" class="btn btn-primary btn-large">Limpiar campos</button>

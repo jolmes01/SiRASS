@@ -1,4 +1,4 @@
-<%@page import="com.sirass.model.Prestador"%>
+<%@page import="com.sirass.model.prestador.Prestador"%>
 <%@page import="com.sirass.model.Usuario"%>
 <%@page import="com.sirass.dao.UsuarioDAO"%>
 <%

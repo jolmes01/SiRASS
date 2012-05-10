@@ -1,4 +1,4 @@
-<%@page import="com.sirass.model.InformeBimensual"%>
+<%@page import="com.sirass.model.prestador.InformeBimensual"%>
 <%@page import="com.sirass.dao.InformeBimensualDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Iterator"%>

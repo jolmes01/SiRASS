@@ -1,7 +1,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="com.sirass.model.InformeBimensual"%>
+<%@page import="com.sirass.model.prestador.InformeBimensual"%>
 <%@page import="com.sirass.dao.InformeBimensualDAO"%>
 <%@page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
