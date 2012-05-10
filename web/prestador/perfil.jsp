@@ -43,7 +43,9 @@
                 <div class="row-fluid">
                     <!-- Sidebar
                     ================================================== -->
-                <jsp:include page="jspf/sidebar.jsp"></jsp:include>
+                <jsp:include page="jspf/sidebar.jsp">
+                    <jsp:param name="active" value="perfil" />
+                </jsp:include>
                 <!-- Contenido
                 ================================================== -->
 
@@ -209,6 +211,10 @@
         </div>
         <!-- Footer
     ================================================== -->
-        <%@include file="/jspf/footer.jsp" %>
+        <jsp:include page="/jspf/footer.jsp">
+            <jsp:param name="datepicker" value="true" />
+            <jsp:param name="timepicker" value="true" />
+            <jsp:param name="nav" value="true" />
+        </jsp:include>
     </body>
 </html>

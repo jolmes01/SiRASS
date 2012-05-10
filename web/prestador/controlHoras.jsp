@@ -26,7 +26,7 @@
                 <!-- Sidebar
                 ================================================== -->
                 <jsp:include page="jspf/sidebar.jsp">
-                    <jsp:param name="active" value="1" />
+                    <jsp:param name="active" value="controlHoras" />
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
@@ -35,7 +35,7 @@
                         <h1>Control de Horas</h1>
                         <form action="../jspf/forms/dataForm.jsp" method="post">
                             <div id="formulario">
-                                <%@include file="/jspf/forms/controlHoras.jsp" %>
+                                <%@include file="jspf/controlHoras.jsp" %>
                                     <div class="form-actions center">
                                         <button type="submit" class="btn btn-primary btn-large">Enviar</button>
                                         <button type="reset" id="reset" class="btn btn-primary btn-large">Limpiar campos</button>

@@ -4,12 +4,13 @@
  */
 package com.sirass.servlet;
 
+import com.sirass.dao.InformeBimensualDAO;
+import com.sirass.model.InformeBimensual;
 import com.sirass.model.Test;
 import com.sirass.service.ProcessRequest;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
-import java.util.Map;
+import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,11 +35,9 @@ public class FormCatcher extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        // Obtener los nombres de los parámetros
-        Enumeration<String> e = request.getParameterNames();
 
-        Map<String, String[]> map;
+        Map<String, String[]> map = null;
+        map = new HashMap<String, String[]>();
 
         String key = null;
         String values[] = null;
@@ -46,30 +45,42 @@ public class FormCatcher extends HttpServlet {
         ProcessRequest processRequest = new ProcessRequest();
         Test test = null;
         map = request.getParameterMap();
+//        System.out.println(map.containsKey("actividades"));
 
         // Obtener todos los elementos enviados
-        while (e.hasMoreElements()) {
-            key = e.nextElement();
-            values = request.getParameterValues(key);
-            // Para cada parametro establecer su valor
-//            map.put(key, values);
-//            System.out.println("key: " + key);
-//            for (String s : values) {
-//                System.out.println("value: " + s);
-//            }
+        
+        Set set = map.entrySet();
+        Iterator e = set.iterator();
+        System.out.println("MAP item " + map.get("clase")[0]);
+//        String user[] = new String[1];
+//        user[0] = (String) request.getSession().getAttribute("username");
+//        map.put("username", user);
+//        map.put("inscripcion", new String[]{"1"});
+        while (e.hasNext()) {
+            Map.Entry me = (Map.Entry) e.next();
+            values = (String[]) me.getValue();
+            System.out.println("key: " + me.getKey());
+            for (String s : values) {
+                System.out.println("value(s): " + s);
+            }
         }
         // Obtener objeto con sus valores establecidos
-        test = (Test) processRequest.getObject(map);
-        System.out.println("name=" + test.getName());
-        System.out.println("edad=" + test.getEdad());
-        String[] dias = test.getDias();
-        System.out.print("dias: " + dias.length);
-        System.out.println("");
-        System.out.print("dias= ");
-        for (String s : dias) {
-            System.out.print(s + ", ");
-        }
+//        test = (Test) processRequest.getObject(map);
+//        System.out.println("name=" + test.getName());
+//        System.out.println("edad=" + test.getEdad());
+//        String[] dias = test.getDias();
+//        System.out.print("dias: " + dias.length);
+//        System.out.println("");
+//        System.out.print("dias= ");
+//        for (String s : dias) {
+//            System.out.print(s + ", ");
+//        }
+        
+        InformeBimensual informe = (InformeBimensual) processRequest.getObject(map);
+        informe.printInfo();
         PrintWriter out = response.getWriter();
+        InformeBimensualDAO dao = new InformeBimensualDAO();
+        dao.insert(informe);
         try {
             /*
              * TODO output your page here. You may use following sample code.

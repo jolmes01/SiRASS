@@ -24,7 +24,7 @@
                 <!-- Sidebar
                 ================================================== -->
                 <jsp:include page="jspf/sidebar.jsp">
-                    <jsp:param name="active" value="1" />
+                    <jsp:param name="active" value="inscripcion" />
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
@@ -61,7 +61,7 @@
                                         <%@include file="/jspf/forms/datosPrograma.jsp" %>
                                     </div>
                                 </div>
-                                <div class="form-actions">
+                                <div class="form-actions center">
                                     <button type="submit" class="btn btn-primary btn-large">Enviar</button>
                                     <button type="reset" id="reset" class="btn btn-primary btn-large">Limpiar campos</button>
                                 </div>

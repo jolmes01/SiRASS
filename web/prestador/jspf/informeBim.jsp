@@ -21,7 +21,7 @@
             <div class="control-group">
                 <label for="terminoPeriodo">N&deg; reporte</label>
                 <div class="controls">
-                    <input type="text" name="nReporte" id="nReporte" class="input-medium" />
+                    <input type="text" name="numReporte" id="numReporte" class="input-medium" />
                 </div>
             </div>
             <div class="control-group">

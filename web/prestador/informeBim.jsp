@@ -24,14 +24,19 @@
                 <!-- Sidebar
                 ================================================== -->
                 <jsp:include page="jspf/sidebar.jsp">
-                    <jsp:param name="active" value="1" />
+                    <jsp:param name="active" value="informeBim" />
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
                 <div class="container bg span7">
                     <div id="contenido">
                         <h1>Informe Bimensual</h1>
-                        <form action="../jspf/forms/dataForm.jsp" method="post">
+<!--                        <form action="../jspf/forms/dataForm.jsp" method="post">-->
+                        <form action="../FormCatcher" method="get">
+                            <input type="hidden" name="username" value="<%= session.getAttribute("username") %>" />
+                            <input type="hidden" name="inscripcion" value="1" />
+                            <input type="hidden" name="acumuladas" value="33" />
+                            <input type="hidden" name="clase" value="com.sirass.model.InformeBimensual"/>
                                 <%@include file="jspf/informeBim.jsp" %>
                             <div class="form-actions center">
                                 <button type="submit" class="btn btn-primary btn-large">Enviar</button>
@@ -51,7 +56,7 @@
         <script>
             $(document).ready(function() {
                 $.datepicker.setDefaults({
-                    formatDate: "dd-mm-yy"
+                    dateFormat: "dd-mm-yy"
                 });
                 $('#inicioPeriodo, #terminoPeriodo').datepicker();
             });

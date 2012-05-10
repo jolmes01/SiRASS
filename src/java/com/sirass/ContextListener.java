@@ -37,54 +37,54 @@ public class ContextListener implements ServletContextListener,
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        System.out.println("######## Context destroyed ########");
-        System.out.println("######## ######## ######## ######## #####\n");
+//        System.out.println("######## Context destroyed ########");
+//        System.out.println("######## ######## ######## ######## #####\n");
 //        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void attributeAdded(ServletContextAttributeEvent event) {
-        System.out.println("######## Context Attribute added ########");
-        System.out.println("name: " + event.getName());
-        System.out.println("######## ######## ######## ######## #####\n");
+//        System.out.println("######## Context Attribute added ########");
+//        System.out.println("name: " + event.getName());
+//        System.out.println("######## ######## ######## ######## #####\n");
 //        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void attributeRemoved(ServletContextAttributeEvent event) {
-        System.out.println("######## Context Attribute removed ########");
-        System.out.println("name: " + event.getName());
-        System.out.println("######## ######## ######## ######## #####\n");
+//        System.out.println("######## Context Attribute removed ########");
+//        System.out.println("name: " + event.getName());
+//        System.out.println("######## ######## ######## ######## #####\n");
 //        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void attributeReplaced(ServletContextAttributeEvent event) {
-        System.out.println("######## Context Attribute replaced ########");
-        System.out.println("name: " + event.getName());
-        System.out.println("######## ######## ######## ######## #####\n");
+//        System.out.println("######## Context Attribute replaced ########");
+//        System.out.println("name: " + event.getName());
+//        System.out.println("######## ######## ######## ######## #####\n");
 //        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void attributeAdded(HttpSessionBindingEvent event) {
-        System.out.println("######## Session Attribute added ########");
-        System.out.println("name: " + event.getName());
-        System.out.println("######## ######## ######## ######## #####\n");
+//        System.out.println("######## Session Attribute added ########");
+//        System.out.println("name: " + event.getName());
+//        System.out.println("######## ######## ######## ######## #####\n");
 //        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void attributeRemoved(HttpSessionBindingEvent event) {
-        System.out.println("######## Session Attribute removed ########");
-        System.out.println("name: " + event.getName());
-        System.out.println("######## ######## ######## ######## #######\n");
+//        System.out.println("######## Session Attribute removed ########");
+//        System.out.println("name: " + event.getName());
+//        System.out.println("######## ######## ######## ######## #######\n");
     }
 
     @Override
     public void attributeReplaced(HttpSessionBindingEvent event) {
-        System.out.println("######## Session Attribute replaced ########");
-        System.out.println("name: " + event.getName());
-        System.out.println("######## ######## ######## ######## #####\n");
+//        System.out.println("######## Session Attribute replaced ########");
+//        System.out.println("name: " + event.getName());
+//        System.out.println("######## ######## ######## ######## #####\n");
     }
 }

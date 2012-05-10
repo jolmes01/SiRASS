@@ -1,3 +1,11 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="com.sirass.model.programass.ProgramaSS"%>
+<%@page import="java.util.List"%>
+<%@page import="com.sirass.dao.ProgramaSSDAO"%>
+<%
+    ProgramaSSDAO daoP = new ProgramaSSDAO();
+    List list = (List<ProgramaSS>) daoP.getListFew();
+%>
 <!-- Datos del programa de SS
 ================================================== -->
 <div class="form-horizontal">
@@ -7,10 +15,19 @@
             <div class="control-group">
                 <label class="control-label" for="idPrograma">Programa:</label>
                 <div class="controls">
-                    <select class="input-xlarge" name="idPrograma" size="10">
+                    <select class="input-xlarge" name="idPrograma" size="10" onchange="changePrograma(this)">
                         <option value="0">-- Seleccionar programa --</option>
-                        <option value="1">Programa 1</option>
-                        <option value="2">Programa 2</option>
+                        <% if (!list.isEmpty() || list != null) {
+                                Iterator it = list.iterator();
+                                while (it.hasNext()) {
+                                    ProgramaSS programa = (ProgramaSS) it.next();
+                        %>
+                        <option value="<%= programa.getIdPrograma()%>"
+                                data-cve="<%= programa.getCvePrograma()%>"><%= programa.getNombre()%> </option>
+                        <%      }
+                        } else {%>
+                        <option value="0">No hay programas</option>
+                        <% }%>
                     </select>
                 </div>
             </div>

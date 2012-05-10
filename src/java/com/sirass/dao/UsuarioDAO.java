@@ -45,6 +45,7 @@ public class UsuarioDAO extends DAO {
                 .setFetchMode("institucion", FetchMode.SELECT)
                 .setFetchMode("administrador", FetchMode.SELECT)
                 .setFetchMode("roles", FetchMode.SELECT)
+                .setCacheable(true)
                 .uniqueResult();
         transaction.commit();
         session.close();

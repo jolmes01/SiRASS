@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var active = $('#active').val();
+    $('#' + active).addClass('active');
     // Obtener sidebar
     var sidebarLinks = $('#sidebar a');
     // Captar cuando se pulsa click

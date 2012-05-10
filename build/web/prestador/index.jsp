@@ -22,7 +22,7 @@
                 <!-- Sidebar
                 ================================================== -->
                 <jsp:include page="jspf/sidebar.jsp">
-                    <jsp:param name="active" value="1" />
+                    <jsp:param name="active" value="home" />
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->
@@ -30,7 +30,7 @@
                     <div id="contenido">
                     <h1>Bienvenido, <%= (String) session.getAttribute("username") %></h1>
     			<p>Actualmente no est&aacute;s inscrito a ning&uacute;n programa de Servicio Social.</p>
-    			<p><a class="btn btn-large btn-primary " href="#">Inscribirse a un programa</a></p>
+    			<p><a class="btn btn-large btn-primary" href="inscripcion.jsp">Inscribirse a un programa</a></p>
     			<h2>Generar documentos</h2>
     			<p>
     				<a class="btn btn-info btn-small" href="#">Carta de presentaci&oacute;n</a>

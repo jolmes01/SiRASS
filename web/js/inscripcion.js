@@ -9,6 +9,7 @@ $(document).ready(function() {
     practicasDiv.hide();
     var practicasInputs = practicasDiv.contents().find('input');
     
+    // Cuando se pulse en servicio Social o practicas profeionales
     $('#ss, #pp').on('click', function() {
         var button = $(this);
         // Comprobar si ya estaba seleccionado
@@ -25,6 +26,35 @@ $(document).ready(function() {
     });
 });
 
+function changePrograma(programas) {
+    // Obtener el index seleccionado
+    var seleccionado = programas.selectedIndex;
+    console.log(seleccionado);
+    // Obtener la clave del programa
+    var clave = programas.options.item(seleccionado).getAttribute("data-cve");
+    // Obtener el id del programa
+    var idPrograma = programas.options.item(seleccionado).getAttribute("value");
+    // Cambiar la clave del programa
+    $('#cvePrograma').val(clave);
+    var responsable = $('#responsable');
+    var cargo = $('#cargoResponsable');
+    // Obtener el responsable y su cargo
+    $.getJSON("/SiRASS/JSONDispatcher?get=responsablePrograma&idPrograma=" + idPrograma)
+    .success(function(data, textStatus, jqXHR) {
+        console.log(data);
+        // Obtener el responsable, su cargo y establecerlos
+        if (data.responsable != null || responsable != "") {
+        responsable.val(data.responsable);
+        } else {
+            responsable.val('');
+        }
+        if (data.cargo != null || cargo != "") {
+            cargo.val(data.cargo);
+        } else {
+            responsable.val('');
+        }
+    });
+}
 
 function obtenerPlanteles(instituciones) {
     // Lista de instituciones

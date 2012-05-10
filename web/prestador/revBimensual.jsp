@@ -28,7 +28,7 @@
                 <!-- Sidebar
                 ================================================== -->
                 <jsp:include page="jspf/sidebar.jsp">
-                    <jsp:param name="active" value="1" />
+                    <jsp:param name="active" value="revBim" />
                 </jsp:include>
                 <!-- Contenido
                 ================================================== -->

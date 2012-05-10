@@ -19,6 +19,7 @@
 	<link href="<%= path %>/css/main.css" rel="stylesheet" />
         <% if (datepicker) { %>
 	<link href="<%= path %>/css/ui-lightness/jquery-ui-1.8.19.custom.css" rel="stylesheet" />
+<!--	<link href="<%= path %>/css/custom-theme/jquery-ui-1.8.16.custom.css" rel="stylesheet" />-->
         <% } %>
         <% if (timepicker) { %>
             <link href="<%= path %>/css/jquery-ui-timepicker-addon.css" rel="stylesheet" />
